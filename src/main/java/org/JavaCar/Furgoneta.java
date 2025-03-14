@@ -9,4 +9,13 @@ public class Furgoneta extends Vehicle{
         super(matricula, marca, model, preubase, motor, rodes);
         this.capacitatCarga = capacitatCarga;
     }
+
+    @Override
+    public double calcularPreu(int dies) {
+        if (capacitatCarga>1000) {
+            return super.calcularPreu(dies)+10*dies;
+        } else {
+            return super.calcularPreu(dies);
+        }
+    }
 }

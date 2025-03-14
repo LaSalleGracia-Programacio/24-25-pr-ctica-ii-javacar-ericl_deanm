@@ -9,4 +9,8 @@ public class Cotxe extends Vehicle {
         this.nombrePlaces = nombrePlaces;
     }
 
+    @Override
+    public double calcularPreu(int dies) {
+        return super.calcularPreu(dies);
+    }
 }

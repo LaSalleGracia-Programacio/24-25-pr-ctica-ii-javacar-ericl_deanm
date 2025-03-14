@@ -25,10 +25,4 @@ public class Roda {
     public void setDiametre(int diametre) {
         this.diametre = diametre;
     }
-
-    //Override
-    @Override
-    public String toString() {
-        return "Roda: " + marca + ", diametre: " + diametre;
-    }
 }

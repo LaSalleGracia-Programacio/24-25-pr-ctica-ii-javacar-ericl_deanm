@@ -25,10 +25,4 @@ public class Motor {
     public void setPotencia(int potencia) {
         this.potencia = potencia;
     }
-
-    //Override
-    @Override
-    public String toString() {
-        return "Motor: " + tipus + ", potencia: " + potencia;
-    }
 }

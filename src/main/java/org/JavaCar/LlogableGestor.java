@@ -5,12 +5,7 @@ import java.util.*;
 public class LlogableGestor {
 
     public static class GestorLlogables {
-            private List<Vehicle> vehicle;
-
-        //Construtor
-        public GestorLlogables() {
-            vehicle = new ArrayList<>();
-        }
+            private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
         //Métodos
         public static void agregarVehicle(Vehicle vehicle) {

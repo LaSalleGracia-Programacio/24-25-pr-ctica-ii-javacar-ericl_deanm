@@ -5,9 +5,9 @@ public abstract class Vehicle implements Llogable {
     protected String matricula;
     protected String marca;
     protected String model;
-    protected double preubase;
+    protected double preuBase;
     protected String motor;
-    protected int rodes;
+    protected Roda rodes;
     protected String etiquetaAmbiental;
 
     /**
@@ -15,17 +15,17 @@ public abstract class Vehicle implements Llogable {
      * @param matricula
      * @param marca
      * @param model
-     * @param preubase
+     * @param preuBase
      * @param motor
      * @param rodes
      */
-    public Vehicle(String matricula, String marca, String model, double preubase, String motor, int rodes) {
+    protected Vehicle(String matricula, String marca, String model, double preuBase, String motor, Roda rodes) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
-        this.preubase = preubase;
+        this.preuBase = preuBase;
         this.motor = motor;
-        this.rodes = rodes;
+        this.rodes = new Roda;
         this.etiquetaAmbiental=calculEtiquetaAmbiental();
     }
 
@@ -60,6 +60,6 @@ public abstract class Vehicle implements Llogable {
      * @return
      */
     public double calcularPreu(int dies) {
-        return preubase*dies;
+        return preuBase*dies;
     }
 }

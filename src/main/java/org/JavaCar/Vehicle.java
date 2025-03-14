@@ -6,7 +6,7 @@ public abstract class Vehicle implements Llogable {
     protected String marca;
     protected String model;
     protected double preuBase;
-    protected String motor;
+    protected Motor motor;
     protected Roda[] rodes;
     protected String etiquetaAmbiental;
 
@@ -19,7 +19,7 @@ public abstract class Vehicle implements Llogable {
      * @param motor
      * @param rodes
      */
-    protected Vehicle(String matricula, String marca, String model, double preuBase, String motor, Roda[] rodes) {
+    protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
@@ -29,7 +29,9 @@ public abstract class Vehicle implements Llogable {
         this.etiquetaAmbiental=calculEtiquetaAmbiental();
     }
 
-    private String calculEtiquetaAmbiental() {}
+    private String calculEtiquetaAmbiental() {
+        return "hola";
+    }
 
     //Getters dels atributs
     public String getMatricula() {
@@ -42,12 +44,12 @@ public abstract class Vehicle implements Llogable {
         return model;
     }
     public double getPreubase() {
-        return preubase;
+        return preuBase;
     }
-    public String getMotor() {
+    public Motor getMotor() {
         return motor;
     }
-    public int getRodes() {
+    public Roda[] getRodes() {
         return rodes;
     }
     public String getEtiquetaAmbiental() {

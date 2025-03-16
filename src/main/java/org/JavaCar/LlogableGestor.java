@@ -6,7 +6,7 @@ import java.util.List;
 public class LlogableGestor {
 
     public static class GestorLloguers {
-        private List<Vehicle> vehicles = new ArrayList<>();
+        private static List<Vehicle> vehicles = new ArrayList<>();
 
         // Métodos
         public void agregarVehicle(Vehicle vehicle) {
@@ -17,9 +17,9 @@ public class LlogableGestor {
             return vehicles;
         }
 
-        public double calcularIngressosTotals(int dies) {
+        public static double calcularIngressosTotals(List<Vehicle> vehicles, int dies) {
             double ingressosTotals = 0.0;
-            for (Vehicle vehicle : vehicles) {
+            for (Vehicle vehicle : GestorLloguers.vehicles) {
                 ingressosTotals += vehicle.calcularPreu(dies);
             }
             return ingressosTotals;

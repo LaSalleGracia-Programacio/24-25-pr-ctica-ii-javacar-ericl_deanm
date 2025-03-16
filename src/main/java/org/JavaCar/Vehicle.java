@@ -43,7 +43,7 @@ public abstract class Vehicle implements Llogable {
     public String getModel() {
         return model;
     }
-    public double getPreubase() {
+    public double getPreuBase() {
         return preuBase;
     }
     public Motor getMotor() {

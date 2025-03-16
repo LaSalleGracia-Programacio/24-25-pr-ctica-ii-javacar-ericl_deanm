@@ -1,26 +1,25 @@
 package org.JavaCar;
 
 public class Moto extends Vehicle {
+    //Atributs
     private int cilindrada;
 
-
-    public Moto(int cilindrada, String matricula, String marca, String modelo, int preuBase, Motor motor, Roda nodes, Etiquetas etiquetaAmbiental) {
-        super(matricula, marca, modelo, preuBase, motor, nodes, etiquetaAmbiental);
+    public Moto(String matricula, String marca, String model, double preuBase, int cilindrada, Motor motor, Roda[] rodes) {
+        super(matricula, marca, model, preuBase, motor, rodes);
         this.cilindrada = cilindrada;
     }
 
+    //Getter cilindrada
     public int getCilindrada() {
         return cilindrada;
     }
 
-    public void setCilindrada(int cilindrada) {
-        this.cilindrada = cilindrada;
-    }
-
     @Override
     public double calcularPreu(int dies) {
-        return 0;
+        if (cilindrada>500) {
+            return super.calcularPreu(dies)+5*dies;
+        } else {
+            return super.calcularPreu(dies);
+        }
     }
-
-    public
 }

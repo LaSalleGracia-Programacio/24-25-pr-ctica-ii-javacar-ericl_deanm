@@ -1,24 +1,26 @@
 package org.JavaCar;
 
-public class Furgoneta extends Vehicle {
+public class Furgoneta extends Vehicle{
+    //Atributs
     private int capacitatCarga;
 
-    public Furgoneta(int capacitatCarga, String matricula, String marca, String modelo, int preuBase, Motor motor, Roda rodes, Etiquetas etiquetaAmbiental) {
-        super(matricula, marca, modelo, preuBase, motor, rodes, etiquetaAmbiental);
+    //Constructor
+    public Furgoneta(String matricula, String marca, String model, double preubase, int capacitatCarga, Motor motor, Roda[] rodes){
+        super(matricula, marca, model, preubase, motor, rodes);
         this.capacitatCarga = capacitatCarga;
     }
 
-    public int getCapacitatCarga() {
+    //Getter capacitat
+    public int getCapacitatCarga(){
         return capacitatCarga;
-    }
-
-    public void setCapacitatCarga(int capacitatCarga) {
-        this.capacitatCarga = capacitatCarga;
     }
 
     @Override
     public double calcularPreu(int dies) {
-        return getPreuBase() * dies;
+        if (capacitatCarga>1000) {
+            return super.calcularPreu(dies)+10*dies;
+        } else {
+            return super.calcularPreu(dies);
+        }
     }
 }
-

@@ -1,4 +1,4 @@
-package org.JavaCar.Alquiler;
+package org.JavaCar;
 
 import org.JavaCar.Clases.Externas.Vehicle;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LlogableGestor {
 
-    public static class GestorLlogables {
+    public static class GestorLloguers {
         private List<Vehicle> vehicles = new ArrayList<>();
 
         // Métodos

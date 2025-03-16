@@ -1,6 +1,4 @@
-package org.JavaCar.Alquiler;
-
-import org.JavaCar.Clases.Externas.Vehicle;
+package org.JavaCar;
 
 import java.util.ArrayList;
 import java.util.List;

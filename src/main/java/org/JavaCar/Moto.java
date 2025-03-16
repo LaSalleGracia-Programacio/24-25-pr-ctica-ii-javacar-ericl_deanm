@@ -1,8 +1,4 @@
-package org.JavaCan.Tipos.Vehiculo;
-
-import org.JavaCar.Clases.Externas.Vehicle;
-import org.JavaCar.Clases.Externas.Roda;
-import org.JavaCar.Etiquetas.Etiquetas;
+package org.JavaCar;
 
 public class Moto extends Vehicle {
     private int cilindrada;

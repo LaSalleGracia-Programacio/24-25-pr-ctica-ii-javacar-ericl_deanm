@@ -1,6 +1,5 @@
 package org.JavaCar;
 
-import org.JavaCar.Clases.Externas.Roda;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.lang.reflect.Field;

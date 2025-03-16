@@ -1,63 +1,67 @@
 package org.JavaCar;
 
 public abstract class Vehicle implements Llogable {
-    // Atributos
-    private int fechaMatriculacion;
-    private String matricula;
-    private String marca;
-    private String modelo;
-    private int preuBase;
-    private Motor motor;
-    private Roda rodes;
-    private Etiquetas etiquetaAmbiental;
+    //Atributs
+    protected String matricula;
+    protected String marca;
+    protected String model;
+    protected double preuBase;
+    protected Motor motor;
+    protected Roda[] rodes;
+    protected String etiquetaAmbiental;
 
-    // Constructor
-    public Vehicle(int fechaMatriculacion, String matricula, String marca, String modelo, int preuBase, Motor motor, Roda rodes, Etiquetas etiquetaAmbiental) {
-        this.fechaMatriculacion = fechaMatriculacion;
+    /**
+     * Constructor amb variables
+     * @param matricula
+     * @param marca
+     * @param model
+     * @param preuBase
+     * @param motor
+     * @param rodes
+     */
+    protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
         this.matricula = matricula;
         this.marca = marca;
-        this.modelo = modelo;
+        this.model = model;
         this.preuBase = preuBase;
         this.motor = motor;
         this.rodes = rodes;
-        this.etiquetaAmbiental = etiquetaAmbiental;
+        this.etiquetaAmbiental=calculEtiquetaAmbiental();
     }
 
-    // Getters
+    private String calculEtiquetaAmbiental() {
+        return "hola";
+    }
+
+    //Getters dels atributs
     public String getMatricula() {
         return matricula;
     }
-
     public String getMarca() {
         return marca;
     }
-
-    public String getModelo() {
-        return modelo;
+    public String getModel() {
+        return model;
     }
-
-    public int getPreuBase() {
+    public double getPreubase() {
         return preuBase;
     }
-
     public Motor getMotor() {
         return motor;
     }
-
-    public Roda getRodes() {
+    public Roda[] getRodes() {
         return rodes;
     }
-
-    public Etiquetas getEtiquetaAmbiental() {
+    public String getEtiquetaAmbiental() {
         return etiquetaAmbiental;
     }
 
-    public Etiquetas setEtiquetaAmbiental(Etiquetas etiquetaAmbiental) {
-        this.etiquetaAmbiental = etiquetaAmbiental;
-    }
-
-    //Extras
-    private String fechasEtiquetas() {
-        if (motor.equalsIgnoreCase("Gasolina"))
+    /**
+     * Mètode implementat de Llogable
+     * @param dies
+     * @return
+     */
+    public double calcularPreu(int dies) {
+        return preuBase*dies;
     }
 }

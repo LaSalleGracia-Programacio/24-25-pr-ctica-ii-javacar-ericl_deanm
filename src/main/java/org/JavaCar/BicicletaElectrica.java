@@ -19,13 +19,6 @@ public class BicicletaElectrica extends VehicleGeneral{
     //Mètode per calcular el preu
     @Override
     public double calcularPreu(int minuts) {
-        if (minuts >= 60) {
-            descompte=minuts*0.03;
-        }else if (minuts >= 90) {
-            descompte=minuts*0.7;
-        }else if (minuts >= 120) {
-            descompte=minuts*0.15;
-        }
-        return super.calcularPreu(minuts)-descompte;
+        return super.calcularPreu(minuts);
     }
 }

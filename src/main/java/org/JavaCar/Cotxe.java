@@ -34,11 +34,6 @@ public class Cotxe extends Vehicle {
 
     @Override
     public double calcularPreu(int dies) {
-        if (dies>=3 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
-            descompte=dies*3;
-        }else if (dies>=7 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
-            descompte=dies*7;
-        }
-        return super.calcularPreu(dies)-descompte;
+        return super.calcularPreu(dies);
     }
 }

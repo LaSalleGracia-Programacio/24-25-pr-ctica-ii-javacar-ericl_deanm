@@ -33,15 +33,10 @@ public class Moto extends Vehicle {
 
     @Override
     public double calcularPreu(int dies) {
-        if (dies>=2 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
-            descompte=dies*1;
-        }else if (dies>=5 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
-            descompte=dies*3;
-        }
         if (cilindrada>500) {
-            return (super.calcularPreu(dies)+5)*dies-descompte;
+            return (super.calcularPreu(dies)+5)*dies;
         } else {
-            return super.calcularPreu(dies)-descompte;
+            return super.calcularPreu(dies);
         }
     }
 }

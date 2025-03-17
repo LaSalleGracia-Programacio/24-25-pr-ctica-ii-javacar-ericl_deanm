@@ -20,13 +20,6 @@ public class PatinetElectric extends VehicleGeneral {
     //Mètode per calcular el preu
     @Override
     public double calcularPreu(int minuts) {
-        if (minuts >= 30) {
-            descompte=minuts*0.02;
-        }else if (minuts >= 60) {
-            descompte=minuts*0.05;
-        }else if (minuts >= 120) {
-            descompte=minuts*0.10;
-        }
-        return super.calcularPreu(minuts)-descompte;
+        return super.calcularPreu(minuts);
     }
 }

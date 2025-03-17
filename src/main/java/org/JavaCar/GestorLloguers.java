@@ -1,7 +1,6 @@
 package org.JavaCar;
 <<<<<<<< HEAD:src/main/java/org/JavaCar/LlogableGestor.java
 
-import org.JavaCar.Clases.Externas.Vehicle;
 ========
 >>>>>>>> edit.test:src/main/java/org/JavaCar/GestorLloguers.java
 

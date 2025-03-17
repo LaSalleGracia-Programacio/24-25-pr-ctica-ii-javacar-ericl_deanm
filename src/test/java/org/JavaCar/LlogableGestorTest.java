@@ -1,5 +1,6 @@
 package org.JavaCar;
 
+import org.JavaCar.Alquiler.Llogable;
 import org.JavaCar.Clases.Externas.Roda;
 import org.JavaCar.Clases.Externas.Vehicle;
 import org.JavaCar.Tipos.Vehiculo.Cotxe;

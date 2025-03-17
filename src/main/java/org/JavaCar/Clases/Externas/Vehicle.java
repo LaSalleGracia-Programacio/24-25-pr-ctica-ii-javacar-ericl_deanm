@@ -1,6 +1,6 @@
 package org.JavaCar.Clases.Externas;
 
-import org.JavaCar.Llogable;
+import org.JavaCar.Alquiler.Llogable;
 import org.JavaCar.Etiquetas.Etiquetas;
 
 public abstract class Vehicle implements Llogable {

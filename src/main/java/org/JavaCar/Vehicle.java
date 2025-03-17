@@ -1,15 +1,14 @@
 package org.JavaCar;
 
-public abstract class Vehicle extends VehicleGeneral implements Llogable {
+public abstract class Vehicle extends VehicleGeneral {
     //Atributs
     protected String matricula;
-    protected Motor motor;
     protected int anyMatriculacio;
     protected int mesMatriculacio;
     protected String etiquetaAmbiental;
 
     /**
-     * Constructor amb variables
+     * Constructor amb paràmetres
      * @param matricula
      * @param marca
      * @param model
@@ -18,9 +17,8 @@ public abstract class Vehicle extends VehicleGeneral implements Llogable {
      * @param rodes
      */
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
-        super(marca, model, preuBase, rodes);
+        super(marca, model, preuBase, motor, rodes);
         this.matricula = matricula;
-        this.motor = motor;
         this.mesMatriculacio = -1;
         this.anyMatriculacio = 0;
         this.etiquetaAmbiental=calculEtiquetaAmbiental(anyMatriculacio, mesMatriculacio);

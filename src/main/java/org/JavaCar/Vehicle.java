@@ -9,6 +9,8 @@ public abstract class Vehicle implements Llogable {
     protected Motor motor;
     protected Roda[] rodes;
     protected String etiquetaAmbiental;
+    protected int anyMatriculacio;
+    protected int mesMatriculacio;
 
     /**
      * Constructor amb variables
@@ -26,10 +28,12 @@ public abstract class Vehicle implements Llogable {
         this.preuBase = preuBase;
         this.motor = motor;
         this.rodes = rodes;
-        this.etiquetaAmbiental=calculEtiquetaAmbiental();
+        this.mesMatriculacio = -1;
+        this.anyMatriculacio = 0;
+        this.etiquetaAmbiental=calculEtiquetaAmbiental(anyMatriculacio, mesMatriculacio);
     }
 
-    private String calculEtiquetaAmbiental() {
+    private String calculEtiquetaAmbiental(int anyMatriculacio) {
         return "hola";
     }
 
@@ -63,5 +67,32 @@ public abstract class Vehicle implements Llogable {
      */
     public double calcularPreu(int dies) {
         return preuBase*dies;
+    }
+
+    /**
+     * Metodo para introducir el año de matriculacion y asi saber la etiqueta
+     * ambiental que le pertoca.
+     * @param anyMatriculacio
+     */
+    public void setAnyMatriculacio(int anyMatriculacio) {
+        this.anyMatriculacio = anyMatriculacio;
+        this.etiquetaAmbiental = calculEtiquetaAmbiental(anyMatriculacio);
+    }
+
+    public void setMesMatriculacio(int mesMatriculacio) {
+        this.mesMatriculacio = mesMatriculacio;
+        this.etiquetaAmbiental = calculEtiquetaAmbiental(mesMatriculacio);
+    }
+
+    private String calculEtiquetaAmbiental(int anyMatriculacio, int mesMatriculacio) {
+        if ((anyMatriculacio >= 2001 && mesMatriculacio >=1 && motor.getTipus() == "Gasolina") || (anyMatriculacio >= 2006 && mesMatriculacio >=1 && motor.getTipus() == "Diesel")) {
+            return "B";
+        } else if ((anyMatriculacio >= 2006 && mesMatriculacio>=1 &&  motor.getTipus() == "Gasolina") || (anyMatriculacio >= 2015 && mesMatriculacio >= 9 && motor.getTipus() == "Diesel")) {
+            return "C";
+        } else if ((motor.getTipus() == "HEV" || motor.getTipus() == "GLP" || motor.getTipus() == "GNL" || motor.getTipus() == "GNC") && motor.getAutonomia() == 40) {
+            return "Eco";
+        } else {
+            return "B";
+        }
     }
 }

@@ -4,7 +4,24 @@ public class Furgoneta extends Vehicle{
     //Atributs
     private int capacitatCarga;
 
-    //Constructor
+    /**
+     * Constructor amb tots els paràmetres
+     * @param matricula
+     * @param marca
+     * @param model
+     * @param preubase
+     * @param capacitatCarga
+     * @param motor
+     * @param rodes
+     * @param mesMatriculacio
+     * @param anyMatriculacio
+     */
+    public Furgoneta(String matricula, String marca, String model, double preubase, int capacitatCarga, Motor motor, Roda[] rodes, int mesMatriculacio, int anyMatriculacio){
+        super(matricula, marca, model, preubase, motor, rodes, mesMatriculacio, anyMatriculacio);
+        this.capacitatCarga = capacitatCarga;
+        super.calculEtiquetaAmbiental(mesMatriculacio, anyMatriculacio);
+    }
+    //Constructor trampa
     public Furgoneta(String matricula, String marca, String model, double preubase, int capacitatCarga, Motor motor, Roda[] rodes){
         super(matricula, marca, model, preubase, motor, rodes);
         this.capacitatCarga = capacitatCarga;

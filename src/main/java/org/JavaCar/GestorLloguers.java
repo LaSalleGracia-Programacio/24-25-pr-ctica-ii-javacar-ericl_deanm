@@ -3,9 +3,8 @@ package org.JavaCar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LlogableGestor {
+public class GestorLloguers {
 
-    public static class GestorLloguers {
         private static List<Vehicle> vehicles = new ArrayList<>();
 
         // Métodos
@@ -35,4 +34,4 @@ public class LlogableGestor {
             return vehiclesFiltrats;
         }
     }
-}
+

@@ -8,9 +8,9 @@ public abstract class Vehicle implements Llogable {
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
-    protected String etiquetaAmbiental;
     protected int anyMatriculacio;
     protected int mesMatriculacio;
+    protected String etiquetaAmbiental;
 
     /**
      * Constructor amb variables
@@ -33,10 +33,6 @@ public abstract class Vehicle implements Llogable {
         this.etiquetaAmbiental=calculEtiquetaAmbiental(anyMatriculacio, mesMatriculacio);
     }
 
-    private String calculEtiquetaAmbiental(int anyMatriculacio) {
-        return "hola";
-    }
-
     //Getters dels atributs
     public String getMatricula() {
         return matricula;
@@ -53,9 +49,9 @@ public abstract class Vehicle implements Llogable {
     public Motor getMotor() {
         return motor;
     }
-    public Roda[] getRodes() {
-        return rodes;
-    }
+    public Roda[] getRodes() {return rodes;}
+    public int getAnyMatriculacio() {return anyMatriculacio;}
+    public int getMesMatriculacio() {return mesMatriculacio;}
     public String getEtiquetaAmbiental() {
         return etiquetaAmbiental;
     }
@@ -69,29 +65,28 @@ public abstract class Vehicle implements Llogable {
         return preuBase*dies;
     }
 
-    /**
-     * Metodo para introducir el año de matriculacion y asi saber la etiqueta
-     * ambiental que le pertoca.
-     * @param anyMatriculacio
-     */
+    //Setters any i més matriculació
     public void setAnyMatriculacio(int anyMatriculacio) {
         this.anyMatriculacio = anyMatriculacio;
-        this.etiquetaAmbiental = calculEtiquetaAmbiental(anyMatriculacio);
     }
-
     public void setMesMatriculacio(int mesMatriculacio) {
         this.mesMatriculacio = mesMatriculacio;
-        this.etiquetaAmbiental = calculEtiquetaAmbiental(mesMatriculacio);
     }
 
+    /**
+     * Calcula la etiqueta mediambiental segons l'any i mes de matriculació i el tipus
+     * @param anyMatriculacio
+     * @param mesMatriculacio
+     * @return
+     */
     private String calculEtiquetaAmbiental(int anyMatriculacio, int mesMatriculacio) {
-        if ((anyMatriculacio >= 2001 && mesMatriculacio >=1 && motor.getTipus() == "Gasolina") || (anyMatriculacio >= 2006 && mesMatriculacio >=1 && motor.getTipus() == "Diesel")) {
+        if ((anyMatriculacio >= 2001 && mesMatriculacio >=1 && motor.getTipus().equals("Gasolina")) || (anyMatriculacio >= 2006 && mesMatriculacio >=1 && motor.getTipus().equals("Diesel"))) {
             return "B";
-        } else if ((anyMatriculacio >= 2006 && mesMatriculacio>=1 &&  motor.getTipus() == "Gasolina") || (anyMatriculacio >= 2015 && mesMatriculacio >= 9 && motor.getTipus() == "Diesel")) {
+        } else if ((anyMatriculacio >= 2006 && mesMatriculacio>=1 &&  motor.getTipus().equals("Gasolina")) || (anyMatriculacio >= 2015 && mesMatriculacio >= 9 && motor.getTipus().equals("Diesel"))) {
             return "C";
-        } else if ((motor.getTipus() == "HEV" || motor.getTipus() == "GLP" || motor.getTipus() == "GNL" || motor.getTipus() == "GNC") && motor.getAutonomia() <= 40) {
+        } else if ((motor.getTipus().equals("HEV") || motor.getTipus().equals("GLP") || motor.getTipus().equals("GNL") || motor.getTipus().equals("GNC")) && motor.getAutonomia() <= 40) {
             return "Eco";
-        } else if ((motor.getTipus() == "BEV" || motor.getTipus() == "REEV" || motor.getTipus() == "PHEV") && motor.getAutonomia() >= 40) {
+        } else if ((motor.getTipus().equals("BEV") || motor.getTipus().equals("REEV") || motor.getTipus().equals("PHEV")) && motor.getAutonomia() >= 40) {
             return "Zero Emissions";
         }
         else {

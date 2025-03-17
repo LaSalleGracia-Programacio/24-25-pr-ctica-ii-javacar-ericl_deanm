@@ -1,11 +1,17 @@
 package org.JavaCar;
 
+import java.util.Scanner;
+
 public abstract class Vehicle extends VehicleGeneral {
     //Atributs
     protected String matricula;
     protected int anyMatriculacio;
     protected int mesMatriculacio;
     protected String etiquetaAmbiental;
+
+
+    //Inici escàner
+    Scanner lector = new Scanner(System.in);
 
     /**
      * Constructor amb paràmetres
@@ -19,7 +25,7 @@ public abstract class Vehicle extends VehicleGeneral {
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
         super(marca, model, preuBase, motor, rodes);
         this.matricula = matricula;
-        this.mesMatriculacio = -1;
+        this.mesMatriculacio = 0;
         this.anyMatriculacio = 0;
         this.etiquetaAmbiental=calculEtiquetaAmbiental(anyMatriculacio, mesMatriculacio);
     }
@@ -75,7 +81,7 @@ public abstract class Vehicle extends VehicleGeneral {
             return "B";
         } else if ((anyMatriculacio >= 2006 && mesMatriculacio>=1 &&  motor.getTipus().equals("Gasolina")) || (anyMatriculacio >= 2015 && mesMatriculacio >= 9 && motor.getTipus().equals("Diesel"))) {
             return "C";
-        } else if ((motor.getTipus().equals("HEV") || motor.getTipus().equals("GLP") || motor.getTipus().equals("GNL") || motor.getTipus().equals("GNC")) && motor.getAutonomia() <= 40) {
+        } else if ((motor.getTipus().equals("HEV") || motor.getTipus().equals("GLP") || motor.getTipus().equals("GNL") || motor.getTipus().equals("GNC")) && motor.getAutonomia() < 40) {
             return "Eco";
         } else if ((motor.getTipus().equals("BEV") || motor.getTipus().equals("REEV") || motor.getTipus().equals("PHEV")) && motor.getAutonomia() >= 40) {
             return "Zero Emissions";

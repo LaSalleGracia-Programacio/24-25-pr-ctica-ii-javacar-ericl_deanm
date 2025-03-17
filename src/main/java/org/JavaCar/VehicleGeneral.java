@@ -6,6 +6,7 @@ public abstract class VehicleGeneral implements Llogable{
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
+    protected double descompte;
 
     /**
      * Constructor amb paràmetres

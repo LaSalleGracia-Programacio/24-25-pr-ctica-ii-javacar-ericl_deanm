@@ -17,10 +17,17 @@ public class Furgoneta extends Vehicle{
 
     @Override
     public double calcularPreu(int dies) {
+        if (capacitatCarga>2500) {
+            descompte=0;
+        }else if (dies>=5 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
+            descompte=dies*5;
+        }else if (dies>=10 && etiquetaAmbiental.equals("Eco") || etiquetaAmbiental.equals("Zero emissions")) {
+            descompte=dies*10;
+        }
         if (capacitatCarga>1000) {
-            return super.calcularPreu(dies)+10*dies;
+            return super.calcularPreu(dies)+10*dies-descompte;
         } else {
-            return super.calcularPreu(dies);
+            return super.calcularPreu(dies)-descompte;
         }
     }
 }

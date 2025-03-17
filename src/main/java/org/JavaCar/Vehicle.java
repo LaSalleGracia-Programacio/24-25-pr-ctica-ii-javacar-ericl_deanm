@@ -89,10 +89,13 @@ public abstract class Vehicle implements Llogable {
             return "B";
         } else if ((anyMatriculacio >= 2006 && mesMatriculacio>=1 &&  motor.getTipus() == "Gasolina") || (anyMatriculacio >= 2015 && mesMatriculacio >= 9 && motor.getTipus() == "Diesel")) {
             return "C";
-        } else if ((motor.getTipus() == "HEV" || motor.getTipus() == "GLP" || motor.getTipus() == "GNL" || motor.getTipus() == "GNC") && motor.getAutonomia() == 40) {
+        } else if ((motor.getTipus() == "HEV" || motor.getTipus() == "GLP" || motor.getTipus() == "GNL" || motor.getTipus() == "GNC") && motor.getAutonomia() <= 40) {
             return "Eco";
-        } else {
-            return "B";
+        } else if ((motor.getTipus() == "BEV" || motor.getTipus() == "REEV" || motor.getTipus() == "PHEV") && motor.getAutonomia() >= 40) {
+            return "Zero Emissions";
+        }
+        else {
+            return "Sense distintiu";
         }
     }
 }

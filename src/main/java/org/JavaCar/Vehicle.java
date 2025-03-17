@@ -1,13 +1,9 @@
 package org.JavaCar;
 
-public abstract class Vehicle implements Llogable {
+public abstract class Vehicle extends VehicleGeneral implements Llogable {
     //Atributs
     protected String matricula;
-    protected String marca;
-    protected String model;
-    protected double preuBase;
     protected Motor motor;
-    protected Roda[] rodes;
     protected int anyMatriculacio;
     protected int mesMatriculacio;
     protected String etiquetaAmbiental;
@@ -22,12 +18,9 @@ public abstract class Vehicle implements Llogable {
      * @param rodes
      */
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+        super(marca, model, preuBase, rodes);
         this.matricula = matricula;
-        this.marca = marca;
-        this.model = model;
-        this.preuBase = preuBase;
         this.motor = motor;
-        this.rodes = rodes;
         this.mesMatriculacio = -1;
         this.anyMatriculacio = 0;
         this.etiquetaAmbiental=calculEtiquetaAmbiental(anyMatriculacio, mesMatriculacio);

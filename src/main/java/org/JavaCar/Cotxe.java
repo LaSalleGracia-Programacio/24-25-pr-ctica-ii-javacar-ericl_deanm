@@ -41,4 +41,19 @@ public class Cotxe extends Vehicle {
         }
         return super.calcularPreu(dies)-descompte;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s, %s, %.2f, %d, %s, %d, %d, %d",
+                getMatricula(),
+                getMarca(),
+                getModel(),
+                getPreuBase(),
+                nombrePlaces,
+                getMotor().getTipus(),
+                getRodes().length,
+                getMesMatriculacio(),
+                getAnyMatriculacio()
+        );
+    }
 }

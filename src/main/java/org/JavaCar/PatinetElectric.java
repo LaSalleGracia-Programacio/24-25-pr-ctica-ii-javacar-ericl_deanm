@@ -29,4 +29,36 @@ public class PatinetElectric extends VehicleGeneral {
         }
         return super.calcularPreu(minuts)-descompte;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s, %.2f, %s, %d, %d",
+                getMarca(),
+                getModel(),
+                getPreuBase(),
+                getMotor().getTipus(),
+                getRodes().length,
+                autonomia
+        );
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getPreuBase() {
+        return preuBase;
+    }
+
+    public Roda[] getRodes() {
+        return rodes;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
 }

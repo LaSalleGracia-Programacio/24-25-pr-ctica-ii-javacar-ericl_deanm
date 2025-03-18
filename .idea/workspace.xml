@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/VehicleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/JavaCar/VehicleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/VehicleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/VehicleTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -174,7 +171,7 @@
       <workItem from="1742208822498" duration="925000" />
       <workItem from="1742288153277" duration="25000" />
       <workItem from="1742290129759" duration="403000" />
-      <workItem from="1742291048529" duration="324000" />
+      <workItem from="1742291048529" duration="877000" />
     </task>
     <servers />
   </component>

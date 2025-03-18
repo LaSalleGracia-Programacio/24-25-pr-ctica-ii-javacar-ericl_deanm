@@ -1,14 +1,117 @@
 package org.JavaCar;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        try {
+            BufferedWriter archivo = new BufferedWriter(new FileWriter("logins.txt"));
+            archivo.write("ericLorenzo123");
+            archivo.write("\n1234");
+            archivo.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo = new BufferedReader(new FileReader("logins.txt"));
+            String linea;
+            while ((linea = lecturaArchivo.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter archivo2 = new BufferedWriter(new FileWriter("furgonetas.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo2 = new BufferedReader(new FileReader("furginetas.txt"));
+            String linea2;
+            while ((linea2 = lecturaArchivo2.readLine()) != null) {
+                System.out.println(linea2);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter archivo3 = new BufferedWriter(new FileWriter("cotxes.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo3 = new BufferedReader(new FileReader("cotxes.txt"));
+            String linea3;
+            while ((linea3 = lecturaArchivo3.readLine()) != null) {
+                System.out.println(linea3);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter archivo4 = new BufferedWriter(new FileWriter("motos.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo2 = new BufferedReader(new FileReader("motos.txt"));
+            String linea2;
+            while ((linea2 = lecturaArchivo2.readLine()) != null) {
+                System.out.println(linea2);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter archivo5 = new BufferedWriter(new FileWriter("furgonetas.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo2 = new BufferedReader(new FileReader("furginetas.txt"));
+            String linea2;
+            while ((linea2 = lecturaArchivo2.readLine()) != null) {
+                System.out.println(linea2);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter archivo6 = new BufferedWriter(new FileWriter("furgonetas.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedReader lecturaArchivo2 = new BufferedReader(new FileReader("furginetas.txt"));
+            String linea2;
+            while ((linea2 = lecturaArchivo2.readLine()) != null) {
+                System.out.println(linea2);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         solicitarCredenciales();
         mostrarMenuPrincipal();
     }
+
 
     private static void solicitarCredenciales() {
         System.out.print("\nPrimero introduzca su usuario: ");

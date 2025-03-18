@@ -66,9 +66,9 @@ public class VehicleTest {
 
         assertTrue("L'atribut 'matricula' hauria de ser protected", 
                    java.lang.reflect.Modifier.isProtected(matriculaField.getModifiers()));
-        assertTrue("L'atribut 'marca' hauria de ser protected", 
+        assertTrue("L'atribut 'marca' hauria de ser protected",
                    java.lang.reflect.Modifier.isProtected(marcaField.getModifiers()));
-        assertTrue("L'atribut 'model' hauria de ser protected", 
+        assertTrue("L'atribut 'model' hauria de ser protected",
                    java.lang.reflect.Modifier.isProtected(modelField.getModifiers()));
     }
 }

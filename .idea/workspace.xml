@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/BicicletaElectrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/BicicletaElectrica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Cotxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Cotxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Furgoneta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Furgoneta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/PatinetElectric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/PatinetElectric.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/FurgonetaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/FurgonetaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/LlogableGestorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/LlogableGestorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/RodaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/RodaTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/VehicleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/VehicleTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +97,7 @@
       <workItem from="1741956096307" duration="818000" />
       <workItem from="1742127301262" duration="3640000" />
       <workItem from="1742202559961" duration="6148000" />
-      <workItem from="1742208822498" duration="840000" />
+      <workItem from="1742208822498" duration="925000" />
     </task>
     <servers />
   </component>

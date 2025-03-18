@@ -35,7 +35,7 @@ public class Furgoneta extends Vehicle{
     @Override
     public double calcularPreu(int dies) {
         if (capacitatCarga>1000) {
-            return super.calcularPreu(dies)+10*dies;
+            return ((super.calcularPreu(dies)/dies)+10)*dies;
         } else {
             return super.calcularPreu(dies);
         }

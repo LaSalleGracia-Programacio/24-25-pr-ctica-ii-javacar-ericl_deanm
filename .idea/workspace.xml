@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Furgoneta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Furgoneta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/GestorLloguers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/LlogableGestor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/JavaCar/Moto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/LlogableGestorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/JavaCar/LlogableGestorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/BicicletaElectrica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/BicicletaElectrica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Cotxe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Cotxe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/GestorLloguers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Moto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/Moto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/PatinetElectric.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/JavaCar/PatinetElectric.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/LlogableGestorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/JavaCar/LlogableGestorTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +44,7 @@
     "JUnit.LlogableGestorTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Eric",
+    "git-widget-placeholder": "edit.test",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

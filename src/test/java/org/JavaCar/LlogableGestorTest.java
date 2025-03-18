@@ -1,10 +1,6 @@
 package org.JavaCar;
 
-import org.JavaCar.Alquiler.Llogable;
-import org.JavaCar.Clases.Externas.Roda;
-import org.JavaCar.Tipos.Vehiculo.Cotxe;
 import org.JavaCar.Tipos.Vehiculo.Moto;
-import org.JavaCar.Clases.Externas.Motor;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,6 +21,6 @@ public class LlogableGestorTest {
         List<Vehicle> vehicles = new ArrayList<>();
         vehicles.add(new Cotxe("1234ABC", "Toyota", "Corolla", 30, 5, new Motor("Gasolina", 120), new Roda[]{new Roda("Michelin", 17), new Roda("Michelin", 17), new Roda("Michelin", 17), new Roda("Michelin", 17)}));
         vehicles.add(new Moto("5678DEF", "Yamaha", "R6", 25, 600, new Motor("Gasolina", 80), new Roda[]{new Roda("Pirelli", 16), new Roda("Pirelli", 16)}));
-        assertEquals(180, LlogableGestor.calcularIngressosTotals(vehicles, 3), 0.01);
+        assertEquals(180, GestorLloguers.calcularIngressosTotals(vehicles, 3), 0.01);
     }
 }

@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="" />
+    <list default="true" id="b0f5cc9e-4712-4a58-8067-6dd7954ca725" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/FurgonetaTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/LlogableGestorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/MotoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/MotorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/RodaTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/JavaCar/VehicleTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/BicicletaElectrica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Cotxe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Etiquetas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Furgoneta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Llogable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/LlogableGestor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Moto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Motor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/PatinetElectric.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Roda.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/Vehicle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/JavaCar/VehicleGeneral.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/FurgonetaTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/LlogableGestorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/MotorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/RodaTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/JavaCar/VehicleTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,8 +74,9 @@
     "JUnit.VehicleTest.testAtributsProtected.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "edit.test",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Eric/Downloads/24-25-pr-ctica-ii-javacar-ericl_deanm-a7daa0cbb0c9e4a8981dce77f69bc9b7a59e981c",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

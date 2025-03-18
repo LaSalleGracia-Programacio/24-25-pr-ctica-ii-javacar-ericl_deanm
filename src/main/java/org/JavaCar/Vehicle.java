@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public abstract class Vehicle extends VehicleGeneral {
     //Atributs
+
+    //Override
+    protected String marca;
+    protected String model;
+    //
+
     protected String matricula;
     protected int mesMatriculacio;
     protected int anyMatriculacio;
@@ -32,8 +38,14 @@ public abstract class Vehicle extends VehicleGeneral {
     }
     //Constructor trampa
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
-        super(marca, model, preuBase, motor, rodes);
+        super(matricula, model, preuBase, motor, rodes);
         this.matricula = matricula;
+        this.marca = marca;
+        this.model = model;
+        this.preuBase = preuBase;
+        this.motor = motor;
+        this.rodes = rodes;
+
     }
 
     //Getters dels atributs

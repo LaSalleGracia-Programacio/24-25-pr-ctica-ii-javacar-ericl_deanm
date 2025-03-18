@@ -60,15 +60,15 @@ public class VehicleTest {
     public void testAtributsProtected() throws NoSuchFieldException {
         // Reflexió per accedir als atributs i verificar que són protected
         Field matriculaField = Vehicle.class.getDeclaredField("matricula");
-        Field marcaField = Vehicle.class.getDeclaredField("marca");
-        Field modelField = Vehicle.class.getDeclaredField("model");
+        Field marcaField = VehicleGeneral.class.getDeclaredField("marca");
+        Field modelField = VehicleGeneral.class.getDeclaredField("model");
 
 
         assertTrue("L'atribut 'matricula' hauria de ser protected", 
                    java.lang.reflect.Modifier.isProtected(matriculaField.getModifiers()));
-        assertTrue("L'atribut 'marca' hauria de ser protected", 
+        assertTrue("L'atribut 'marca' hauria de ser protected",
                    java.lang.reflect.Modifier.isProtected(marcaField.getModifiers()));
-        assertTrue("L'atribut 'model' hauria de ser protected", 
+        assertTrue("L'atribut 'model' hauria de ser protected",
                    java.lang.reflect.Modifier.isProtected(modelField.getModifiers()));
     }
 }

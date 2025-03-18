@@ -1,46 +1,26 @@
 package org.JavaCar;
-<<<<<<<< HEAD:src/main/java/org/JavaCar/LlogableGestor.java
-
-========
->>>>>>>> edit.test:src/main/java/org/JavaCar/GestorLloguers.java
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GestorLloguers {
 
-<<<<<<<< HEAD:src/main/java/org/JavaCar/LlogableGestor.java
-    public static class GestorLloguers {
-        private List<Vehicle> vehicles = new ArrayList<>();
-========
-        private static List<Vehicle> vehicles = new ArrayList<>();
->>>>>>>> edit.test:src/main/java/org/JavaCar/GestorLloguers.java
-
-        // Métodos
-        public void agregarVehicle(Vehicle vehicle) {
-            vehicles.add(vehicle);
+    public static double calcularIngressosTotals(List<Vehicle> vehicles, int dies) {
+        double ingressosTotals = 0;
+        for (int i = 0; i < vehicles.size(); i++) {
+            ingressosTotals += vehicles.get(i).calcularPreu(dies);
         }
-
-        public List<Vehicle> obtindreVehicles() {
-            return vehicles;
-        }
-
-        public static double calcularIngressosTotals(List<Vehicle> vehicles, int dies) {
-            double ingressosTotals = 0.0;
-            for (Vehicle vehicle : GestorLloguers.vehicles) {
-                ingressosTotals += vehicle.calcularPreu(dies);
-            }
-            return ingressosTotals;
-        }
-
-        public List<Vehicle> filtrarPerPreu(double preuMax) {
-            List<Vehicle> vehiclesFiltrats = new ArrayList<>();
-            for (Vehicle vehicle : vehicles) {
-                if (vehicle.calcularPreu(1) <= preuMax) { // Preu per un dia
-                    vehiclesFiltrats.add(vehicle);
-                }
-            }
-            return vehiclesFiltrats;
-        }
+        return ingressosTotals;
     }
+
+    public List<Vehicle> filtrarPerPreu(List<Vehicle> vehicles, double preuMax) {
+        List<Vehicle> vehiclesFiltrats = new ArrayList<>();
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (vehicles.get(i).calcularPreu(1) <= preuMax) { // Preu per un dia
+                vehiclesFiltrats.add(vehicles.get(i));
+            }
+        }
+        return vehiclesFiltrats;
+    }
+}
 

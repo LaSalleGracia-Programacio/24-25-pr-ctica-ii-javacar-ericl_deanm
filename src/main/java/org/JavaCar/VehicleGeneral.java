@@ -1,6 +1,6 @@
 package org.JavaCar;
 
-public abstract class VehicleGeneral implements Llogable{
+public abstract class VehicleGeneral implements Llogable {
     protected String marca;
     protected String model;
     protected double preuBase;

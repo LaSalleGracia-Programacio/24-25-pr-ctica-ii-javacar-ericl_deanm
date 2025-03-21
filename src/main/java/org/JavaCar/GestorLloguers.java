@@ -1,20 +1,12 @@
 package org.JavaCar;
-<<<<<<<< HEAD:src/main/java/org/JavaCar/LlogableGestor.java
-
-========
->>>>>>>> edit.test:src/main/java/org/JavaCar/GestorLloguers.java
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GestorLloguers {
 
-<<<<<<<< HEAD:src/main/java/org/JavaCar/LlogableGestor.java
-    public static class GestorLloguers {
-        private List<Vehicle> vehicles = new ArrayList<>();
-========
         private static List<Vehicle> vehicles = new ArrayList<>();
->>>>>>>> edit.test:src/main/java/org/JavaCar/GestorLloguers.java
+
 
         // Métodos
         public void agregarVehicle(Vehicle vehicle) {

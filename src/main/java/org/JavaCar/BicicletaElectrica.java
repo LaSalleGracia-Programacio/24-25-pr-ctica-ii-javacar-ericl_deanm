@@ -22,7 +22,7 @@ public class BicicletaElectrica extends VehicleGeneral{
         if (minuts >= 60) {
             descompte=minuts*0.03;
         }else if (minuts >= 90) {
-            descompte=minuts*0.7;
+            descompte=minuts*0.07;
         }else if (minuts >= 120) {
             descompte=minuts*0.15;
         }

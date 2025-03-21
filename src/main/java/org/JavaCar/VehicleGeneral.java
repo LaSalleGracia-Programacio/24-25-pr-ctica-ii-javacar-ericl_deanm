@@ -1,6 +1,6 @@
 package org.JavaCar;
 
-public abstract class VehicleGeneral implements Llogable {
+public abstract class VehicleGeneral implements Llogable, Descompte {
     protected String marca;
     protected String model;
     protected double preuBase;
@@ -24,7 +24,51 @@ public abstract class VehicleGeneral implements Llogable {
         this.rodes = rodes;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public double getPreuBase() {
+        return preuBase;
+    }
+    public void setPreuBase(double preuBase) {
+        this.preuBase = preuBase;
+    }
+    public Motor getMotor() {
+        return motor;
+    }
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+    public Roda[] getRodes() {
+        return rodes;
+    }
+    public void setRodes(Roda[] rodes) {
+        this.rodes = rodes;
+    }
+    public double getDescompte() {
+        return descompte;
+    }
+    public void setDescompte(double descompte) {
+        this.descompte = descompte;
+    }
+
     public double calcularPreu(int dies) {
         return preuBase*dies;
+    }
+
+    @Override
+    public double calcularPreuAmbDescompte(int dies) {
+        double preuSenseDescompte = calcularPreu(dies);
+        double preuAmbDescompte = preuSenseDescompte;
+        return preuAmbDescompte;
     }
 }

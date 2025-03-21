@@ -23,4 +23,3 @@ public class GestorLloguers {
         return vehiclesFiltrats;
     }
 }
-

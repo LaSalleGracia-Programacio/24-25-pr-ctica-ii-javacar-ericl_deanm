@@ -19,7 +19,7 @@ public class Furgoneta extends Vehicle{
     public Furgoneta(String matricula, String marca, String model, double preubase, int capacitatCarga, Motor motor, Roda[] rodes, int mesMatriculacio, int anyMatriculacio){
         super(matricula, marca, model, preubase, motor, rodes, mesMatriculacio, anyMatriculacio);
         this.capacitatCarga = capacitatCarga;
-        super.calculEtiquetaAmbiental(mesMatriculacio, anyMatriculacio);
+        this.etiquetaAmbiental=super.calculEtiquetaAmbiental(mesMatriculacio, anyMatriculacio);
     }
     //Constructor trampa
     public Furgoneta(String matricula, String marca, String model, double preubase, int capacitatCarga, Motor motor, Roda[] rodes){
@@ -27,7 +27,59 @@ public class Furgoneta extends Vehicle{
         this.capacitatCarga = capacitatCarga;
     }
 
-    //Getter capacitat
+    //Getters i setters
+    public String getMatricula() {return matricula;}
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    @Override
+    public String getMarca() {return marca;}
+    @Override
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    @Override
+    public String getModel() {return model;}
+    @Override
+    public void setModel(String model) {
+        this.model = model;
+    }
+    @Override
+    public double getPreuBase() {return preuBase;}
+    @Override
+    public void setPreuBase(double preuBase) {
+        this.preuBase = preuBase;
+    }
+    @Override
+    public Motor getMotor() {return motor;}
+    @Override
+    public void setMotor(Motor motor) {this.motor = motor;}
+    @Override
+    public Roda[] getRodes() {return rodes;}
+    @Override
+    public void setRodes(Roda[] rodes) {this.rodes = rodes;}
+    @Override
+    public void setDescompte(double descompte) {
+        super.setDescompte(descompte);
+    }
+    @Override
+    public double getDescompte() {
+        return this.descompte;
+    }
+    @Override
+    public int getMesMatriculacio() {return mesMatriculacio;}
+    @Override
+    public void setMesMatriculacio(int mesMatriculacio) {
+        this.mesMatriculacio = mesMatriculacio;
+    }
+    @Override
+    public int getAnyMatriculacio() {return anyMatriculacio;}
+    @Override
+    public void setAnyMatriculacio(int anyMatriculacio) {
+        this.anyMatriculacio = anyMatriculacio;
+    }
+    @Override
+    public Etiquetas getEtiquetaAmbiental() {return etiquetaAmbiental;}
     public int getCapacitatCarga(){
         return capacitatCarga;
     }
@@ -39,5 +91,19 @@ public class Furgoneta extends Vehicle{
         } else {
             return super.calcularPreu(dies);
         }
+    }
+
+    @Override
+    public double calcularPreuAmbDescompte(int dies) {
+        double preuSenseDescompte = calcularPreu(dies);
+        double preuAmbDescompte;
+        if (dies >= 5) {
+            return preuAmbDescompte = preuSenseDescompte - dies*5;
+        } else if (dies>=10) {
+            preuAmbDescompte = preuSenseDescompte - dies * 10;
+        }else {
+            preuAmbDescompte = preuSenseDescompte;
+        }
+        return preuAmbDescompte;
     }
 }

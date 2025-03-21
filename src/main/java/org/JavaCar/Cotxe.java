@@ -94,7 +94,7 @@ public class Cotxe extends Vehicle {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte;
         if (dies >= 3) {
-            return preuAmbDescompte = preuSenseDescompte - dies*3;
+            preuAmbDescompte = preuSenseDescompte - dies*3;
         } else if (dies>=7) {
             preuAmbDescompte = preuSenseDescompte - dies * 7;
         }else {

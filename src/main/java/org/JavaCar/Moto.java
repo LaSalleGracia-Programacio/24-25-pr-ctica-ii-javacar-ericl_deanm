@@ -97,7 +97,7 @@ public class Moto extends Vehicle {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte;
         if (dies >= 2) {
-            return preuAmbDescompte = preuSenseDescompte - dies*1;
+            preuAmbDescompte = preuSenseDescompte - dies*1;
         } else if (dies>=5) {
             preuAmbDescompte = preuSenseDescompte - dies * 3;
         }else {

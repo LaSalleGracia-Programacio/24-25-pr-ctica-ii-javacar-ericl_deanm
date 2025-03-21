@@ -98,7 +98,7 @@ public class Furgoneta extends Vehicle{
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte;
         if (dies >= 5) {
-            return preuAmbDescompte = preuSenseDescompte - dies*5;
+            preuAmbDescompte = preuSenseDescompte - dies*5;
         } else if (dies>=10) {
             preuAmbDescompte = preuSenseDescompte - dies * 10;
         }else {

@@ -1,0 +1,3 @@
+1111AAA,Toyota,Corolla,25000,5,Gasolina,150,4,6,2021
+2222BBB,Honda,Civic,23000,5,Híbrido,120,4,7,2022
+3333CCC,Ford,Focus,21000,5,Diésel,180,4,8,2020

@@ -1,6 +1,7 @@
 package org.JavaCar;
 
 public abstract class VehicleGeneral implements Llogable, Descompte {
+    protected String matricula;
     protected String marca;
     protected String model;
     protected double preuBase;
@@ -10,13 +11,15 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
 
     /**
      * Constructor amb paràmetres
+     * @param matricula
      * @param marca
      * @param model
      * @param preuBase
      * @param motor
      * @param rodes
      */
-    public VehicleGeneral(String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+    public VehicleGeneral(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+        this.matricula = matricula;
         this.marca = marca;
         this.model = model;
         this.preuBase = preuBase;
@@ -24,6 +27,12 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         this.rodes = rodes;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
     public String getMarca() {
         return marca;
     }

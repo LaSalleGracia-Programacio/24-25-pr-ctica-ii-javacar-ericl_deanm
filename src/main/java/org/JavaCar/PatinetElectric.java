@@ -84,7 +84,7 @@ public class PatinetElectric extends VehicleGeneral {
         double preuSenseDescompte = calcularPreu(minuts);
         double preuAmbDescompte;
         if (minuts >= 30) {
-            return preuAmbDescompte = preuSenseDescompte - minuts*0.02;
+           preuAmbDescompte = preuSenseDescompte - minuts*0.02;
         } else if (minuts>=60) {
             preuAmbDescompte = preuSenseDescompte - minuts*0.05;
         } else if (minuts >= 120) {

@@ -1,0 +1,3 @@
+Xiaomi,Mi Scooter,500,Eléctrico,30,2,30
+Segway,Ninebot,600,Eléctrico,40,2,40
+Razor,E300,400,Eléctrico,25,2,25

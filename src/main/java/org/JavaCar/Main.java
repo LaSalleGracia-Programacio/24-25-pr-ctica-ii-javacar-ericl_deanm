@@ -1,17 +1,25 @@
 package org.JavaCar;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
+    //Escàner static per tot el main
     static Scanner scanner = new Scanner(System.in);
 
+    //Main
     public static void main(String[] args) {
         solicitarCredenciales();
         mostrarMenuPrincipal();
     }
 
-
+    /**
+     * Imprimeix per consola l'arxiu
+     * @param nombreArchivo
+     */
     public static void imprimirArchivo(String nombreArchivo) {
         try {
             BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
@@ -24,13 +32,23 @@ public class Main {
         }
     }
 
+    /**
+     * Trova valors dins d'un arxiu
+     * @param nombreArchivo
+     * @param comprobar
+     * @return
+     */
     public static boolean encontrarArchivo(String nombreArchivo, String comprobar) {
         try {
-            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            //BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            File file = new File(nombreArchivo);
+            Scanner lectorArxiu = new Scanner(file);
             String linea;
-            while ((linea = lecturaArchivo.readLine()) != null) {
-                System.out.println(linea);
-                if (linea.equals(comprobar)) {
+            linea=lectorArxiu.nextLine();
+            while (linea != null) {
+                linea=lectorArxiu.nextLine();
+                System.out.print(linea);
+                if (linea.trim().equals(comprobar.trim())) {
                     return true;
                 }
             }
@@ -55,7 +73,7 @@ public class Main {
                 System.out.println("Bienvenido al sistema.");
                 variableControl = true;
             } else {
-                System.out.println("Usuario no encontrado.");
+                System.out.println("Usuario o contraseña incorrectos.");
             }
         }while (!variableControl);
     }

@@ -87,7 +87,7 @@ public class Main {
                 afegirVehicle();
                 break;
             case 2:
-                System.out.println("\nModificando vehículo...");
+                modificarVehicle();
                 break;
             case 3:
                 System.out.println("\nEliminando vehículo...");
@@ -154,6 +154,24 @@ public class Main {
                 break;
             default:
                 System.out.println("\nOpción no válida.");
+        }
+    }
+
+    public static void modificarVehicle() {
+        //Declaració variables
+        String matricula;
+
+        //Inici funció
+        System.out.println("Escribe la matrícula o identificador del vehículo que quieres modificar:");
+        matricula = scanner.nextLine();
+        if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", matricula)){
+            System.out.println("Matrícula encontrada, que atributo quieres modificar?");
+            System.out.println("1. Matrícula.");
+            System.out.println("2. Marca.");
+            System.out.println("3. Modelo.");
+            System.out.println("4. Precio base.");
+        }else {
+            System.out.println("Matrícula no encontrada.");
         }
     }
 
@@ -279,6 +297,46 @@ public class Main {
     }
 
     /**
+     * Comprova que la matrícula tingui al menys un digit i un caràcter i que sigui única
+     * @return
+     */
+    public static String comprovarMatricula() {
+        String linea;
+        boolean teLletra;
+        boolean teNumero;
+
+        do {
+            scanner.nextLine();
+            teLletra = false;
+            teNumero = false;
+
+            System.out.println("Introduce la matrícula (debe contener al menos una letra y un número): ");
+            linea = scanner.nextLine();
+            // Recorremos cada carácter de la línea
+            for (char c : linea.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    teLletra = true;
+                } else if (Character.isDigit(c)) {
+                    teNumero = true;
+                }
+
+                // Si ya cumplió ambos requisitos, salimos del bucle
+                if (teLletra && teNumero) {
+                    break;
+                }
+            }
+            if (!teLletra || !teNumero) {
+                System.out.println("La línea no cumple los requisitos. Debe tener al menos una letra y un número.");
+            }
+            if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", linea)) {
+                System.out.println("Esta matrícula ya existe, no pueden haber dos iguales.");
+            }
+        } while (!teLletra || !teNumero || encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", linea));
+        // Convertir todas las letras a mayúsculas
+        return linea.toUpperCase();
+    }
+
+    /**
      * Construeix les rodes segons les especificades
      * @param numRodes
      * @return
@@ -340,6 +398,11 @@ public class Main {
             writer.write(text);
             writer.newLine();
             writer.close();
+
+            BufferedWriter writerV = new BufferedWriter(new FileWriter("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", true));
+            writerV.write(text);
+            writerV.newLine();
+            writerV.close();
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
@@ -404,39 +467,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static String comprovarMatricula() {
-        String linea;
-        boolean teLletra;
-        boolean teNumero;
-
-        do {
-            scanner.nextLine();
-            teLletra = false;
-            teNumero = false;
-
-            System.out.println("Introduce la matrícula (debe contener al menos una letra y un número): ");
-            linea = scanner.nextLine();
-            // Recorremos cada carácter de la línea
-            for (char c : linea.toCharArray()) {
-                if (Character.isLetter(c)) {
-                    teLletra = true;
-                } else if (Character.isDigit(c)) {
-                    teNumero = true;
-                }
-
-                // Si ya cumplió ambos requisitos, salimos del bucle
-                if (teLletra && teNumero) {
-                    break;
-                }
-            }
-            if (!teLletra || !teNumero) {
-                System.out.println("La línea no cumple los requisitos. Debe tener al menos una letra y un número.");
-            }
-        } while (!teLletra || !teNumero);
-        // Convertir todas las letras a mayúsculas
-        return linea.toUpperCase();
     }
 
     /**

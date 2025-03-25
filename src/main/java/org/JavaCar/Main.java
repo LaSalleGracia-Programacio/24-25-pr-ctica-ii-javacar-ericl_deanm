@@ -292,10 +292,16 @@ public class Main {
         String model;
         double preuBase;
         int nombrePlaces;
+        String tipusMotor;
+        int potenciaMotor;
+        int autonomiaMotor;
         Motor motor;
-        Roda[] rodes = new Roda[4];
+        String marcaRoda;
+        int diametreRoda;
         int mesMatriculacio;
         int anyMatriculacio;
+
+        //Inici mètode
         System.out.println("Escribe la matrícula del vehículo:");
         matricula = scanner.nextLine();
         System.out.println("Escribe la marca del vehículo:");
@@ -306,8 +312,54 @@ public class Main {
         preuBase = comprovarDouble();
         System.out.println("Escribe el número de plazas:");
         nombrePlaces = comprovarInt();
-        
+        System.out.println("Escribe el mes y el año de matriculación: ");
+        System.out.print("Mes: ");
+        do {
+            mesMatriculacio = comprovarInt();
+            if (mesMatriculacio < 1 || mesMatriculacio > 12) {
+                System.out.println("Escribe un mes del año, entre 1 y 12.");
+                scanner.nextLine();
+            }
+        }while (mesMatriculacio < 1 || mesMatriculacio > 12);
+        System.out.println("Año: ");
+        do{
+            anyMatriculacio = comprovarInt();
+            if (anyMatriculacio < 1000 || anyMatriculacio > 9999) {
+                System.out.println("Escribe un número de 4 cifras.");
+            }
+        }while (anyMatriculacio < 1000 || anyMatriculacio > 9999);
+        System.out.println("Introduce el tipo de motor, su potencia y si tiene autonomía:");
+        System.out.print("Tipo de motor: ");
+        tipusMotor = scanner.nextLine();
+        System.out.println();
+        System.out.print("Potencia de motor: ");
+        potenciaMotor = comprovarInt();
+        System.out.println();
+        System.out.print("Si te autonomia, introdueix el valor. Si no, posa un valor negatiu: ");
+        autonomiaMotor = comprovarInt();
+        System.out.println();
+        //Construïm el motor del cotxe
+        if (autonomiaMotor < 0) {
+            motor = new Motor(tipusMotor, potenciaMotor);
+        }else {
+            motor = new Motor(tipusMotor, potenciaMotor, autonomiaMotor);
+        }
+        System.out.println("Escribe la marca y el diámetro de las ruedas que usa el coche: ");
+        System.out.print("Marca: ");
+        marcaRoda = scanner.nextLine();
+        System.out.println();
+        System.out.print("Diámetro");
+        diametreRoda = comprovarInt();
+        System.out.println();
+        //Construïm les rodes
+        Roda[] rodes = {new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda)};
+        //Construïm el cotxe
+        Cotxe cotxe = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes, mesMatriculacio, anyMatriculacio);
+        //Afegim el cotxe a l'arraylist vehiclesDisponibles
+        vehiclesDisponibles.add(cotxe);
     }
+
+    public Motor construirMotor() {}
 
     public static double comprovarDouble() {
         while (!scanner.hasNextDouble()) {

@@ -100,32 +100,6 @@ public class Main {
         }
     }
 
-    /**
-     * Mostra el menú de registres
-     */
-    public static void mostrarMenuRegistros() {
-        System.out.println("\nPortal de Registros. Seleccione una opción:");
-        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Salir");
-
-        System.out.print("Opción: ");
-        int opcion = scanner.nextInt();
-
-        switch (opcion) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                System.out.println("\nConsultando registros...");
-                break;
-            case 6:
-                System.out.println("\nSaliendo del portal de Registros...");
-                break;
-            default:
-                System.out.println("\nOpción no válida.");
-        }
-    }
-
     public static void afegirVehicle() {
         System.out.println("¿Qué vehículo quieres añadir?");
         System.out.println("1. Coche\n2. Moto\n3. Furgoneta\n4. Bicicleta\n5. Patinete\n6. Salir");
@@ -157,6 +131,32 @@ public class Main {
         }
     }
 
+    /**
+     * Mostra el menú de registres
+     */
+    public static void mostrarMenuRegistros() {
+        System.out.println("\nPortal de Registros. Seleccione una opción:");
+        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Salir");
+
+        System.out.print("Opción: ");
+        int opcion = scanner.nextInt();
+
+        switch (opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                System.out.println("\nConsultando registros...");
+                break;
+            case 6:
+                System.out.println("\nSaliendo del portal de Registros...");
+                break;
+            default:
+                System.out.println("\nOpción no válida.");
+        }
+    }
+
 
     /**
      * Construïm el vehicle segons el tipus i segons les especificacions de l'usuari i l'afegim a l'array de vehiclesDisponibles
@@ -181,8 +181,7 @@ public class Main {
 
         //Inici mètode
         if (tipusVehicle.equals("Coche") || tipusVehicle.equals("Moto") || tipusVehicle.equals("Furgoneta")) {
-            System.out.println("Escribe la matrícula del vehículo:");
-            matricula = scanner.nextLine();
+            matricula = comprovarMatricula();
         }else if (tipusVehicle.equals("Bicicleta") || tipusVehicle.equals("Patinete")) {
             do {
                 System.out.println("Escribe solo el número del identificador:");
@@ -205,8 +204,8 @@ public class Main {
                     }
                 }
             }while(repetir);
+            scanner.nextLine();
         }
-        scanner.nextLine();
         System.out.println("Escribe la marca del vehículo:");
         marca = scanner.nextLine();
         System.out.println("Escribe el modelo del vehículo:");
@@ -337,9 +336,10 @@ public class Main {
 
     public static void escriureArxiu(String nombreArchivo, String text) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true));
             writer.write(text);
             writer.newLine();
+            writer.close();
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
@@ -404,6 +404,39 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String comprovarMatricula() {
+        String linea;
+        boolean teLletra;
+        boolean teNumero;
+
+        do {
+            scanner.nextLine();
+            teLletra = false;
+            teNumero = false;
+
+            System.out.println("Introduce la matrícula (debe contener al menos una letra y un número): ");
+            linea = scanner.nextLine();
+            // Recorremos cada carácter de la línea
+            for (char c : linea.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    teLletra = true;
+                } else if (Character.isDigit(c)) {
+                    teNumero = true;
+                }
+
+                // Si ya cumplió ambos requisitos, salimos del bucle
+                if (teLletra && teNumero) {
+                    break;
+                }
+            }
+            if (!teLletra || !teNumero) {
+                System.out.println("La línea no cumple los requisitos. Debe tener al menos una letra y un número.");
+            }
+        } while (!teLletra || !teNumero);
+        // Convertir todas las letras a mayúsculas
+        return linea.toUpperCase();
     }
 
     /**

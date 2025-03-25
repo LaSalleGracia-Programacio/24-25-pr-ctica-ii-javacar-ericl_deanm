@@ -326,9 +326,10 @@ public class Main {
     }
 
     public static void escriureArxiu(String nombreArchivo, String text) {
-        try (FileWriter fw = new FileWriter(nombreArchivo, true);
+        try {
+            FileWriter fw = new FileWriter(nombreArchivo, true);
              BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw)) {
+             PrintWriter out = new PrintWriter(bw);
             out.println(text);
             System.out.println("Texto agregado correctamente.");
         } catch (IOException e) {

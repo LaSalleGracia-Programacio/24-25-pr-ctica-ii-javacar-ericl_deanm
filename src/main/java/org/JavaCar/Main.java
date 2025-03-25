@@ -188,22 +188,25 @@ public class Main {
                 System.out.println("Escribe solo el número del identificador:");
                 identificador = comprovarInt();
                 if (tipusVehicle.equals("Bicicleta")) {
-                    if (encontrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt", "BIC-" + identificador)) {
+                        if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt", "BIC-" + identificador)) {
                         System.out.println("Este id ya ha sido usado antes, introduce otro.");
                         repetir = true;
                     } else {
+                        System.out.println("ID aceptado.");
                         repetir = false;
                     }
                 }else if (tipusVehicle.equals("Patinete")) {
-                    if (encontrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt", "PAT-" + identificador)) {
+                    if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt", "PAT-" + identificador)) {
                         System.out.println("Este id ya ha sido usado antes, introduce otro.");
                         repetir = true;
                     } else {
+                        System.out.println("ID aceptado.");
                         repetir = false;
                     }
                 }
             }while(repetir);
         }
+        scanner.nextLine();
         System.out.println("Escribe la marca del vehículo:");
         marca = scanner.nextLine();
         System.out.println("Escribe el modelo del vehículo:");
@@ -247,26 +250,31 @@ public class Main {
             Cotxe cotxe = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim el cotxe a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(cotxe);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/cotxes.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+nombrePlaces+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
         }else if (tipusVehicle.equals("Moto")) {
             //Construïm la moto
             Moto moto = new Moto(matricula, marca, model, preuBase, cilindrada, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim la moto a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(moto);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/motos.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+cilindrada+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
         }else if (tipusVehicle.equals("Furgoneta")) {
             //Construïm la furgo
             Furgoneta furgo = new Furgoneta(matricula, marca, model, preuBase, capacitatCarga, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim la furgo a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(furgo);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/furgonetas.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+capacitatCarga+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
         }else if (tipusVehicle.equals("Bicicleta")) {
             //Construïm la bici
             BicicletaElectrica bici = new BicicletaElectrica(matricula, marca, model, preuBase, motor, rodes);
             //Afegim la bici a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(bici);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+motor.getTipus()+";"+rodes[0].getMarca());
         }else if (tipusVehicle.equals("Patinete")) {
             //Construïm el patinet
             PatinetElectric patinet = new PatinetElectric(matricula, marca, model, preuBase, motor, rodes);
             //Afegim el patinet a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(patinet);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+motor.getTipus()+";"+rodes[0].getMarca());
         }
         System.out.println("Vehículo insertado con éxito.");
     }
@@ -284,10 +292,11 @@ public class Main {
 
         //Inici funció
         System.out.println("Escribe la marca y el diámetro de las ruedas que usa el coche: ");
+        scanner.nextLine();
         System.out.print("Marca: ");
         marcaRoda = scanner.nextLine();
         System.out.println();
-        System.out.print("Diámetro");
+        System.out.print("Diámetro: ");
         diametreRoda = comprovarInt();
         System.out.println();
         for (int i = 0; i < numRodes; i++) {
@@ -308,6 +317,7 @@ public class Main {
 
         //Inici funció
         System.out.println("Introduce el tipo de motor, su potencia y si tiene autonomía:");
+        scanner.nextLine();
         System.out.print("Tipo de motor: ");
         tipusMotor = scanner.nextLine();
         System.out.println();
@@ -327,11 +337,9 @@ public class Main {
 
     public static void escriureArxiu(String nombreArchivo, String text) {
         try {
-            FileWriter fw = new FileWriter(nombreArchivo, true);
-             BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw);
-            out.println(text);
-            System.out.println("Texto agregado correctamente.");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+            writer.write(text);
+            writer.newLine();
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }

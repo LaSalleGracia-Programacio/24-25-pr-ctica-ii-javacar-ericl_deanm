@@ -18,6 +18,413 @@ public class Main {
         mostrarMenuPrincipal();
     }
 
+    /**
+     * Solicita les credencials al usuari
+     */
+    public static void solicitarCredenciales() {
+        boolean variableControl = false;
+        do {
+            System.out.print("\nPrimero introduzca su usuario: ");
+            String usuario = scanner.nextLine();
+
+            System.out.print("A continuación, introduzca su contraseña: ");
+            String contrasena = scanner.nextLine();
+
+            String credenciales = usuario.trim() + ";" + contrasena.trim();
+            if (encontrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/logins.txt", credenciales)) {
+                System.out.println("Bienvenido al sistema.");
+                variableControl = true;
+            } else {
+                System.out.println("Usuario o contraseña incorrectos. Vuelva a intentarlo.");
+            }
+        }while (!variableControl);
+    }
+
+    /**
+     * Mostra el menú principal
+     */
+    public static void mostrarMenuPrincipal() {
+        int opcion;
+
+        do {
+            System.out.println("\nSeleccione el portal al que desea acceder:");
+            System.out.println("1. Vehículos\n2. Cuentas\n3. Registros\n4. Salir");
+
+            System.out.print("Opción: ");
+            opcion = comprovarInt();
+
+            switch (opcion) {
+                case 1:
+                    mostrarMenuVehiculos();
+                    break;
+                case 2:
+                    System.out.println("\nAccediendo al portal de Cuentas...");
+                    break;
+                case 3:
+                    mostrarMenuRegistros();
+                    break;
+                case 4:
+                    System.out.println("\nHasta la próxima...");
+                    break;
+                default:
+                    System.out.println("\nOpción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 4);
+    }
+
+    /**
+     * Mostra el menú de vehicles
+     */
+    public static void mostrarMenuVehiculos() {
+        System.out.println("\nPortal de Vehículos. Seleccione una opción:");
+        System.out.println("1. Añadir nuevo vehículo\n2. Modificar vehículo existente\n3. Eliminar vehículo existente\n4. Salir");
+
+        System.out.print("Opción: ");
+        int opcion = comprovarInt();
+
+        switch (opcion) {
+            case 1:
+                afegirVehicle();
+                break;
+            case 2:
+                System.out.println("\nModificando vehículo...");
+                break;
+            case 3:
+                System.out.println("\nEliminando vehículo...");
+                break;
+            case 4:
+                System.out.println("\nSaliendo del portal de Vehículos...");
+                break;
+            default:
+                System.out.println("\nOpción no válida.");
+        }
+    }
+
+    /**
+     * Mostra el menú de registres
+     */
+    public static void mostrarMenuRegistros() {
+        System.out.println("\nPortal de Registros. Seleccione una opción:");
+        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Salir");
+
+        System.out.print("Opción: ");
+        int opcion = scanner.nextInt();
+
+        switch (opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                System.out.println("\nConsultando registros...");
+                break;
+            case 6:
+                System.out.println("\nSaliendo del portal de Registros...");
+                break;
+            default:
+                System.out.println("\nOpción no válida.");
+        }
+    }
+
+    public static void afegirVehicle() {
+        System.out.println("¿Qué vehículo quieres añadir?");
+        System.out.println("1. Coche\n2. Moto\n3. Furgoneta\n4. Bicicleta\n5. Patinete\n6. Salir");
+
+        System.out.print("Opción: ");
+        int opcion = comprovarInt();
+
+        switch (opcion) {
+            case 1:
+                construirVehicle("Coche");
+                break;
+            case 2:
+                construirVehicle("Moto");
+                break;
+            case 3:
+                construirVehicle("Furgoneta");
+                break;
+            case 4:
+                construirVehicle("Bicicleta");
+                break;
+            case 5:
+                construirVehicle("Patinete");
+                break;
+            case 6:
+                System.out.println("\nSaliendo del portal de Vehículos...");
+                break;
+            default:
+                System.out.println("\nOpción no válida.");
+        }
+    }
+
+
+    /**
+     * Construïm el vehicle segons el tipus i segons les especificacions de l'usuari i l'afegim a l'array de vehiclesDisponibles
+     * @param tipusVehicle
+     */
+    public static void construirVehicle(String tipusVehicle) {
+        //declaració variables
+        String matricula="";
+        int identificador=0;
+        String marca;
+        String model;
+        double preuBase;
+        int nombrePlaces=0;
+        int cilindrada=0;
+        int capacitatCarga=0;
+        Motor motor;
+        int numRodes;
+        Roda[] rodes;
+        int mesMatriculacio=0;
+        int anyMatriculacio=0;
+        boolean repetir = false;
+
+        //Inici mètode
+        if (tipusVehicle.equals("Coche") || tipusVehicle.equals("Moto") || tipusVehicle.equals("Furgoneta")) {
+            System.out.println("Escribe la matrícula del vehículo:");
+            matricula = scanner.nextLine();
+        }else if (tipusVehicle.equals("Bicicleta") || tipusVehicle.equals("Patinete")) {
+            do {
+                System.out.println("Escribe solo el número del identificador:");
+                identificador = comprovarInt();
+                if (tipusVehicle.equals("Bicicleta")) {
+                    if (encontrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt", "BIC-" + identificador)) {
+                        System.out.println("Este id ya ha sido usado antes, introduce otro.");
+                        repetir = true;
+                    } else {
+                        repetir = false;
+                    }
+                }else if (tipusVehicle.equals("Patinete")) {
+                    if (encontrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt", "PAT-" + identificador)) {
+                        System.out.println("Este id ya ha sido usado antes, introduce otro.");
+                        repetir = true;
+                    } else {
+                        repetir = false;
+                    }
+                }
+            }while(repetir);
+        }
+        System.out.println("Escribe la marca del vehículo:");
+        marca = scanner.nextLine();
+        System.out.println("Escribe el modelo del vehículo:");
+        model = scanner.nextLine();
+        System.out.println("Escribe el precio base del vehículo:");
+        preuBase = comprovarDouble();
+        if (tipusVehicle.equals("Coche")) {
+            System.out.println("Escribe el número de plazas:");
+            nombrePlaces = comprovarInt();
+        }else if (tipusVehicle.equals("Moto")) {
+            System.out.println("Escribe la cilindrada:");
+            cilindrada = comprovarInt();
+        }else if (tipusVehicle.equals("Furgoneta")) {
+            System.out.println("Escribe la capacidad de carga:");
+            capacitatCarga = comprovarInt();
+        }
+        if (tipusVehicle.equals("Coche") || tipusVehicle.equals("Moto") || tipusVehicle.equals("Furgoneta")) {
+            System.out.println("Escribe el mes y el año de matriculación: ");
+            System.out.print("Mes: ");
+            do {
+                mesMatriculacio = comprovarInt();
+                if (mesMatriculacio < 1 || mesMatriculacio > 12) {
+                    System.out.println("Escribe un mes del año, entre 1 y 12.");
+                    scanner.nextLine();
+                }
+            } while (mesMatriculacio < 1 || mesMatriculacio > 12);
+            System.out.println("Año: ");
+            do {
+                anyMatriculacio = comprovarInt();
+                if (anyMatriculacio < 1000 || anyMatriculacio > 9999) {
+                    System.out.println("Escribe un número de 4 cifras.");
+                }
+            } while (anyMatriculacio < 1000 || anyMatriculacio > 9999);
+        }
+        motor = construirMotor();
+        System.out.println("Escribe el número de ruedas del vehículo:");
+        numRodes = comprovarInt();
+        rodes=construirRodes(numRodes);
+        if (tipusVehicle.equals("Coche")) {
+            //Construïm el cotxe
+            Cotxe cotxe = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes, mesMatriculacio, anyMatriculacio);
+            //Afegim el cotxe a l'arraylist vehiclesDisponibles
+            vehiclesDisponibles.add(cotxe);
+        }else if (tipusVehicle.equals("Moto")) {
+            //Construïm la moto
+            Moto moto = new Moto(matricula, marca, model, preuBase, cilindrada, motor, rodes, mesMatriculacio, anyMatriculacio);
+            //Afegim la moto a l'arraylist vehiclesDisponibles
+            vehiclesDisponibles.add(moto);
+        }else if (tipusVehicle.equals("Furgoneta")) {
+            //Construïm la furgo
+            Furgoneta furgo = new Furgoneta(matricula, marca, model, preuBase, capacitatCarga, motor, rodes, mesMatriculacio, anyMatriculacio);
+            //Afegim la furgo a l'arraylist vehiclesDisponibles
+            vehiclesDisponibles.add(furgo);
+        }else if (tipusVehicle.equals("Bicicleta")) {
+            //Construïm la bici
+            BicicletaElectrica bici = new BicicletaElectrica(matricula, marca, model, preuBase, motor, rodes);
+            //Afegim la bici a l'arraylist vehiclesDisponibles
+            vehiclesDisponibles.add(bici);
+        }else if (tipusVehicle.equals("Patinete")) {
+            //Construïm el patinet
+            PatinetElectric patinet = new PatinetElectric(matricula, marca, model, preuBase, motor, rodes);
+            //Afegim el patinet a l'arraylist vehiclesDisponibles
+            vehiclesDisponibles.add(patinet);
+        }
+        System.out.println("Vehículo insertado con éxito.");
+    }
+
+    /**
+     * Construeix les rodes segons les especificades
+     * @param numRodes
+     * @return
+     */
+    public static Roda[] construirRodes(int numRodes) {
+        //Declaració variables
+        String marcaRoda;
+        int diametreRoda;
+        Roda[] rodes = new Roda[numRodes];
+
+        //Inici funció
+        System.out.println("Escribe la marca y el diámetro de las ruedas que usa el coche: ");
+        System.out.print("Marca: ");
+        marcaRoda = scanner.nextLine();
+        System.out.println();
+        System.out.print("Diámetro");
+        diametreRoda = comprovarInt();
+        System.out.println();
+        for (int i = 0; i < numRodes; i++) {
+            rodes[i] = new Roda(marcaRoda, diametreRoda);
+        }
+        return rodes;
+    }
+
+    /**
+     * Construeix el motor del vehicle
+     * @return
+     */
+    public static Motor construirMotor() {
+        //Declaració variables
+        String tipusMotor;
+        int potenciaMotor;
+        int autonomiaMotor;
+
+        //Inici funció
+        System.out.println("Introduce el tipo de motor, su potencia y si tiene autonomía:");
+        System.out.print("Tipo de motor: ");
+        tipusMotor = scanner.nextLine();
+        System.out.println();
+        System.out.print("Potencia de motor: ");
+        potenciaMotor = comprovarInt();
+        System.out.println();
+        System.out.print("Si te autonomia, introdueix el valor. Si no, posa un valor negatiu: ");
+        autonomiaMotor = comprovarInt();
+        System.out.println();
+        //Construïm el motor del vehicle
+        if (autonomiaMotor < 0) {
+            return new Motor(tipusMotor, potenciaMotor);
+        }else {
+            return new Motor(tipusMotor, potenciaMotor, autonomiaMotor);
+        }
+    }
+
+    public static void escriureArxiu(String nombreArchivo, String text) {
+        try (FileWriter fw = new FileWriter(nombreArchivo, true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
+            out.println(text);
+            System.out.println("Texto agregado correctamente.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
+
+
+    /**
+     * Trova linees dins d'un arxiu
+     * @param nombreArchivo
+     * @param comprobar
+     * @return
+     */
+    public static boolean encontrarLineaArchivo(String nombreArchivo, String comprobar) {
+        try {
+            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = lecturaArchivo.readLine()) != null) {
+                if (linea.trim().equals(comprobar.trim())) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Troba atributs dins d'un arxiu
+     * @param nombreArchivo
+     * @param comprobar
+     * @return
+     */
+    public static boolean encontrarAtributoArchivo(String nombreArchivo, String comprobar) {
+        try {
+            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = lecturaArchivo.readLine()) != null) {
+                for (String atribut : linea.split(";")) {
+                    if (atribut.trim().equals(comprobar.trim())) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Imprimeix per consola l'arxiu
+     * @param nombreArchivo
+     */
+    public static void imprimirArchivo(String nombreArchivo) {
+        try {
+            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = lecturaArchivo.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Comprova que el valor sigui double
+     * @return
+     */
+    public static double comprovarDouble() {
+        while (!scanner.hasNextDouble()) {
+            scanner.nextLine();
+            System.out.println("Introduzca un número.");
+        }
+        return scanner.nextDouble();
+    }
+
+    /**
+     * Comprova que el valor sigui un enter.
+     * @return
+     */
+    private static int comprovarInt() {
+        while (!scanner.hasNextInt()) {
+            scanner.nextLine();
+            System.out.println("Introduzca un número entero.");
+        }
+        return scanner.nextInt();
+    }
+
+    /**
+     * Crea els vehicles i els guarda a la llista vehicleDisponible
+     * @return
+     */
     private static List<VehicleGeneral> crearObjectes() {
         //BICI
         Motor motorBici1 = new Motor("BEV", 250, 80);
@@ -138,271 +545,5 @@ public class Main {
         vehiclesDisponibles.add(moto4);
 
         return vehiclesDisponibles;
-    }
-
-    /**
-     * Imprimeix per consola l'arxiu
-     * @param nombreArchivo
-     */
-    public static void imprimirArchivo(String nombreArchivo) {
-        try {
-            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
-            String linea;
-            while ((linea = lecturaArchivo.readLine()) != null) {
-                System.out.println(linea);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Trova valors dins d'un arxiu
-     * @param nombreArchivo
-     * @param comprobar
-     * @return
-     */
-    public static boolean encontrarArchivo(String nombreArchivo, String comprobar) {
-        try {
-            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
-            String linea;
-            while ((linea = lecturaArchivo.readLine()) != null) {
-                if (linea.trim().equals(comprobar.trim())) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
-    /**
-     * Solicita les credencials al usuari
-     */
-    public static void solicitarCredenciales() {
-        boolean variableControl = false;
-        do {
-            System.out.print("\nPrimero introduzca su usuario: ");
-            String usuario = scanner.nextLine();
-
-            System.out.print("A continuación, introduzca su contraseña: ");
-            String contrasena = scanner.nextLine();
-
-            String credenciales = usuario.trim() + ";" + contrasena.trim();
-            if (encontrarArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/logins.txt", credenciales)) {
-                System.out.println("Bienvenido al sistema.");
-                variableControl = true;
-            } else {
-                System.out.println("Usuario o contraseña incorrectos. Vuelva a intentarlo.");
-            }
-        }while (!variableControl);
-    }
-
-    /**
-     * Mostra el menú principal
-     */
-    public static void mostrarMenuPrincipal() {
-        int opcion;
-
-        do {
-            System.out.println("\nSeleccione el portal al que desea acceder:");
-            System.out.println("1. Vehículos\n2. Cuentas\n3. Registros\n4. Salir");
-
-            System.out.print("Opción: ");
-            opcion = comprovarInt();
-
-            switch (opcion) {
-                case 1:
-                    mostrarMenuVehiculos();
-                    break;
-                case 2:
-                    System.out.println("\nAccediendo al portal de Cuentas...");
-                    break;
-                case 3:
-                    mostrarMenuRegistros();
-                    break;
-                case 4:
-                    System.out.println("\nHasta la próxima...");
-                    break;
-                default:
-                    System.out.println("\nOpción no válida. Intente de nuevo.");
-            }
-        } while (opcion != 4);
-    }
-
-    /**
-     * Mostra el menú de vehicles
-     */
-    public static void mostrarMenuVehiculos() {
-        System.out.println("\nPortal de Vehículos. Seleccione una opción:");
-        System.out.println("1. Añadir nuevo vehículo\n2. Modificar vehículo existente\n3. Eliminar vehículo existente\n4. Salir");
-
-        System.out.print("Opción: ");
-        int opcion = comprovarInt();
-
-        switch (opcion) {
-            case 1:
-                afegirVehicle();
-                break;
-            case 2:
-                System.out.println("\nModificando vehículo...");
-                break;
-            case 3:
-                System.out.println("\nEliminando vehículo...");
-                break;
-            case 4:
-                System.out.println("\nSaliendo del portal de Vehículos...");
-                break;
-            default:
-                System.out.println("\nOpción no válida.");
-        }
-    }
-
-    public static void afegirVehicle() {
-        System.out.println("¿Qué vehículo quieres añadir?");
-        System.out.println("1. Coche\n2. Moto\n3. Furgoneta\n4. Bicicleta\n5. Patinete\n6. Salir");
-
-        System.out.print("Opción: ");
-        int opcion = comprovarInt();
-
-        switch (opcion) {
-            case 1:
-                afegirCotxe();
-                break;
-            case 2:
-                System.out.println("\nModificando vehículo...");
-                break;
-            case 3:
-                System.out.println("\nEliminando vehículo...");
-                break;
-            case 4:
-                System.out.println("\nSaliendo del portal de Vehículos...");
-                break;
-            default:
-                System.out.println("\nOpción no válida.");
-        }
-    }
-
-    public static void afegirCotxe() {
-        //declaració variables
-        String matricula;
-        String marca;
-        String model;
-        double preuBase;
-        int nombrePlaces;
-        String tipusMotor;
-        int potenciaMotor;
-        int autonomiaMotor;
-        Motor motor;
-        String marcaRoda;
-        int diametreRoda;
-        int mesMatriculacio;
-        int anyMatriculacio;
-
-        //Inici mètode
-        System.out.println("Escribe la matrícula del vehículo:");
-        matricula = scanner.nextLine();
-        System.out.println("Escribe la marca del vehículo:");
-        marca = scanner.nextLine();
-        System.out.println("Escribe el modelo del vehículo:");
-        model = scanner.nextLine();
-        System.out.println("Escribe el precio base del vehículo:");
-        preuBase = comprovarDouble();
-        System.out.println("Escribe el número de plazas:");
-        nombrePlaces = comprovarInt();
-        System.out.println("Escribe el mes y el año de matriculación: ");
-        System.out.print("Mes: ");
-        do {
-            mesMatriculacio = comprovarInt();
-            if (mesMatriculacio < 1 || mesMatriculacio > 12) {
-                System.out.println("Escribe un mes del año, entre 1 y 12.");
-                scanner.nextLine();
-            }
-        }while (mesMatriculacio < 1 || mesMatriculacio > 12);
-        System.out.println("Año: ");
-        do{
-            anyMatriculacio = comprovarInt();
-            if (anyMatriculacio < 1000 || anyMatriculacio > 9999) {
-                System.out.println("Escribe un número de 4 cifras.");
-            }
-        }while (anyMatriculacio < 1000 || anyMatriculacio > 9999);
-        System.out.println("Introduce el tipo de motor, su potencia y si tiene autonomía:");
-        System.out.print("Tipo de motor: ");
-        tipusMotor = scanner.nextLine();
-        System.out.println();
-        System.out.print("Potencia de motor: ");
-        potenciaMotor = comprovarInt();
-        System.out.println();
-        System.out.print("Si te autonomia, introdueix el valor. Si no, posa un valor negatiu: ");
-        autonomiaMotor = comprovarInt();
-        System.out.println();
-        //Construïm el motor del cotxe
-        if (autonomiaMotor < 0) {
-            motor = new Motor(tipusMotor, potenciaMotor);
-        }else {
-            motor = new Motor(tipusMotor, potenciaMotor, autonomiaMotor);
-        }
-        System.out.println("Escribe la marca y el diámetro de las ruedas que usa el coche: ");
-        System.out.print("Marca: ");
-        marcaRoda = scanner.nextLine();
-        System.out.println();
-        System.out.print("Diámetro");
-        diametreRoda = comprovarInt();
-        System.out.println();
-        //Construïm les rodes
-        Roda[] rodes = {new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda), new Roda(marcaRoda, diametreRoda)};
-        //Construïm el cotxe
-        Cotxe cotxe = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes, mesMatriculacio, anyMatriculacio);
-        //Afegim el cotxe a l'arraylist vehiclesDisponibles
-        vehiclesDisponibles.add(cotxe);
-    }
-
-    public Motor construirMotor() {}
-
-    public static double comprovarDouble() {
-        while (!scanner.hasNextDouble()) {
-            scanner.nextLine();
-            System.out.println("Introduzca un número.");
-        }
-        return scanner.nextDouble();
-    }
-
-    /**
-     * Comprova que el valor sigui un enter.
-     * @return
-     */
-    private static int comprovarInt() {
-        while (!scanner.hasNextInt()) {
-            scanner.nextLine();
-            System.out.println("Introduzca un número entero.");
-        }
-        return scanner.nextInt();
-    }
-    /**
-     * Mostra el menú de registres
-     */
-    public static void mostrarMenuRegistros() {
-        System.out.println("\nPortal de Registros. Seleccione una opción:");
-        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Salir");
-
-        System.out.print("Opción: ");
-        int opcion = scanner.nextInt();
-
-        switch (opcion) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                System.out.println("\nConsultando registros...");
-                break;
-            case 6:
-                System.out.println("\nSaliendo del portal de Registros...");
-                break;
-            default:
-                System.out.println("\nOpción no válida.");
-        }
     }
 }

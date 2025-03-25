@@ -1,3 +1,4 @@
-1234ABC,Ford,Transit,20000,1000,Diesel,150,4,5,2020
-5678DEF,Mercedes,Sprinter,25000,1200,Gasolina,200,4,6,2021
-9101GHI,Renault,Master,18000,800,Eléctrico,100,4,4,2019
+7890MNO;Mercedes;Sprinter;75.00;1200;Diesel;Goodyear;4;2022
+1234PQR;Ford;E-Transit;95.00;1100;BEV;Bridgestone;8;2023
+5678STU;Citroën;Jumper;65.00;1400;GLP;Michelin;5;2021
+9012VWX;Volkswagen;Crafter;85.00;1300;Diesel;Goodyear;2;2023

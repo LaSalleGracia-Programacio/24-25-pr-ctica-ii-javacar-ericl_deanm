@@ -1,3 +1,4 @@
-BH,Atom,1200,Eléctrico,50,2,50
-Orbea,Vibe,1500,Eléctrico,60,2,60
-Trek,Powerfly,2000,Eléctrico,70,2,70
+BIC-1;Specialized;TurboVado;0.25;BEV;Shimano
+BIC-2;Trek;Powerfly;0.30;BEV;Mavic
+BIC-3;Cannondale;TesoroNeo;0.20;BEV;Shimano
+BIC-4;BH;AtomX;0.15;BEV;Mavic

@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.JavaCar.GestorLloguers.calcularIngressosTotalsVG;
-import static org.JavaCar.GestorLloguers.filtrarPerPreuVG;
+import static org.JavaCar.GestorLloguers.*;
 
 public class Main {
     //Variables estàtiques
@@ -211,12 +210,13 @@ public class Main {
         }
     }
 
+    /**
+     * Filtra la llista de vehicles especificada segons el preu máxim especificat
+     */
     public static void filtrarPerPreu() {
         //Declaració variables
         int opcion;
         double preuMax;
-        double ingressosTotals;
-        String variableControl;
         int comptador=0;
         String id;
         boolean vehicleTrobat=false;
@@ -232,22 +232,22 @@ public class Main {
             case 1: {
                 System.out.println("Indica el precio máximo por día (bicicletas y patinetes se calcularán por minutos):");
                 preuMax=comprovarDouble();
-                filtrarPerPreuVG(vehiclesDisponibles, preuMax);
                 System.out.println("Vehículos filtrados por precio: "+preuMax);
+                filtrarPerPreuVG(vehiclesDisponibles, preuMax);
                 break;
             }
             case 2: {
                 scanner.nextLine();
                 System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
                 while (true) {
-                    variableControl = scanner.nextLine();
-                    if (variableControl.equals("0")) {
-                        break;
-                    }else {
+                    do {
                         comptador++;
-                        do {
-                            System.out.println("Matrícula/id " + comptador + ":");
-                            id = variableControl.toUpperCase();
+                        System.out.println("Matrícula/id " + comptador + ":");
+                        id = scanner.nextLine();
+                        if (id.equals("0")) {
+                            break;
+                        }else {
+                            id = id.toUpperCase();
                             for (int i = 0; i < vehiclesDisponibles.size(); i++) {
                                 if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
                                     vehiclesMirar.add(vehiclesDisponibles.get(i));
@@ -258,15 +258,23 @@ public class Main {
                             if (!vehicleTrobat) {
                                 System.out.println("Matrícula no encontrada, vehículo no añadido");
                             }
-                        }while (!vehicleTrobat);
+                        }
+                    }while (!vehicleTrobat);
+                    if (id.equals("0")) {
+                        break;
+                    }else {
                         System.out.println("Vehículo encontrado y añadido");
                     }
                 }
                 System.out.println("Lista de vehículos terminada.");
-                System.out.println("Indica el precio máximo por día (bicicletas y patinetes se calcularán por minutos):");
-                preuMax=comprovarDouble();
-                filtrarPerPreuVG(vehiclesMirar, preuMax);
-                System.out.println("Vehículos filtrados por precio: "+preuMax);
+                if (vehiclesMirar.isEmpty()) {
+                    System.out.println("No hay ningún vehículo en la lista.");
+                }else {
+                    System.out.println("Indica el precio máximo por día (bicicletas y patinetes se calcularán por minutos):");
+                    preuMax = comprovarDouble();
+                    System.out.println("Vehículos filtrados por precio: " + preuMax);
+                    filtrarPerPreuVG(vehiclesMirar, preuMax);
+                }
                 break;
             }
             default: {
@@ -283,8 +291,8 @@ public class Main {
         //Declaració variables
         int opcion;
         int dies;
-        double ingressosTotals;
-        String variableControl;
+        double ingressosTotalsSD;
+        double ingressosTotalsAD;
         int comptador=0;
         String id;
         boolean vehicleTrobat=false;
@@ -300,38 +308,53 @@ public class Main {
             case 1: {
                 System.out.println("Indica los días que quieres calcular (bicicletas y patinetes se calcularán por minutos):");
                 dies=comprovarInt();
-                ingressosTotals=calcularIngressosTotalsVG(vehiclesDisponibles, dies);
-                System.out.println("Los ingresos totales de todos los vehículos: " + ingressosTotals);
+                ingressosTotalsSD=calcularIngressosTotalsVGSD(vehiclesDisponibles, dies);
+                ingressosTotalsAD=calcularIngressosTotalsVGAD(vehiclesDisponibles, dies);
+                System.out.println("Los ingresos totales sin descuento de todos los vehículos: " + ingressosTotalsSD);
+                System.out.println("Los ingresos totales con descuento de todos los vehículos: " + ingressosTotalsAD);
                 break;
             }
             case 2: {
                 scanner.nextLine();
                 System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
-                do {
-                    comptador++;
-                    System.out.println("Matrícula/id " + comptador + ":");
-                    variableControl = scanner.nextLine();
-                    if (variableControl.equals("0")) {
-                        break;
-                    }
-                    id = variableControl.toUpperCase();
-                    for (int i = 0; i < vehiclesDisponibles.size(); i++) {
-                        if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
-                            vehiclesMirar.add(vehiclesDisponibles.get(i));
-                            vehicleTrobat = true;
+                while (true) {
+                    do {
+                        comptador++;
+                        System.out.println("Matrícula/id " + comptador + ":");
+                        id = scanner.nextLine();
+                        if (id.equals("0")) {
                             break;
+                        }else {
+                            id = id.toUpperCase();
+                            for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+                                if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
+                                    vehiclesMirar.add(vehiclesDisponibles.get(i));
+                                    vehicleTrobat = true;
+                                    break;
+                                }
+                            }
+                            if (!vehicleTrobat) {
+                                System.out.println("Matrícula no encontrada, vehículo no añadido");
+                            }
                         }
+                    }while (!vehicleTrobat);
+                    if (id.equals("0")) {
+                        break;
+                    }else {
+                        System.out.println("Vehículo encontrado y añadido");
                     }
-                    if (!vehicleTrobat) {
-                        System.out.println("Matrícula no encontrada, vehículo no añadido");
-                    }
-                }while (!vehicleTrobat);
-                System.out.println("Vehículo encontrado y añadido");
+                }
                 System.out.println("Lista de vehículos terminada.");
-                System.out.println("Indica los días que quieres calcular (bicicletas y patinetes se calcularán por minutos):");
-                dies=comprovarInt();
-                ingressosTotals=calcularIngressosTotalsVG(vehiclesMirar, dies);
-                System.out.println("Los ingresos totales de los vehículos indicados: " + ingressosTotals);
+                if (vehiclesMirar.isEmpty()) {
+                    System.out.println("No hay ningún vehículo en la lista.");
+                }else {
+                    System.out.println("Indica los días que quieres calcular (bicicletas y patinetes se calcularán por minutos):");
+                    dies = comprovarInt();
+                    ingressosTotalsSD = calcularIngressosTotalsVGSD(vehiclesMirar, dies);
+                    ingressosTotalsAD = calcularIngressosTotalsVGAD(vehiclesMirar, dies);
+                    System.out.println("Los ingresos totales sin descuento de los vehículos indicados: " + ingressosTotalsSD);
+                    System.out.println("Los ingresos totales con descuento de los vehículos indicados: " + ingressosTotalsAD);
+                }
                 break;
             }
             default: {

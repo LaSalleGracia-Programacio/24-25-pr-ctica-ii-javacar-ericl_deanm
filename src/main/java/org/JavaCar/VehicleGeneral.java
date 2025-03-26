@@ -82,7 +82,7 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
                 ", Marca='" + marca + '\'' +
                 ", Modelo='" + model + '\'' +
                 ", Precio base=" + preuBase +
-                ", Motor=" + motor.getTipus() +
-                ", Ruedas={" + Arrays.toString(rodes)+"}";
+                ", Motor={" + motor.getTipus() +
+                ", Ruedas={" + rodes[0].getMarca()+rodes[0].getDiametre()+"}";
     }
 }

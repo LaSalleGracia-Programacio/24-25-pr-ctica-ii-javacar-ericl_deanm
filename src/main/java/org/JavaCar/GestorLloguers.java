@@ -13,10 +13,19 @@ public class GestorLloguers {
         }
         return ingressosTotals;
     }
-    public static double calcularIngressosTotalsVG(List<VehicleGeneral> vehicles, int dies) {
+    //Mètode AD
+    public static double calcularIngressosTotalsVGAD(List<VehicleGeneral> vehicles, int dies) {
         double ingressosTotals = 0;
         for (int i = 0; i < vehicles.size(); i++) {
             ingressosTotals += vehicles.get(i).calcularPreuAmbDescompte(dies);
+        }
+        return ingressosTotals;
+    }
+    //Mètode SD
+    public static double calcularIngressosTotalsVGSD(List<VehicleGeneral> vehicles, int dies) {
+        double ingressosTotals = 0;
+        for (int i = 0; i < vehicles.size(); i++) {
+            ingressosTotals += vehicles.get(i).calcularPreu(dies);
         }
         return ingressosTotals;
     }
@@ -25,7 +34,7 @@ public class GestorLloguers {
     public static List<Vehicle> filtrarPerPreu(List<Vehicle> vehicles, double preuMax) {
         List<Vehicle> vehiclesFiltrats = new ArrayList<>();
         for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).calcularPreu(1) <= preuMax) { // Preu per un dia
+            if (vehicles.get(i).getPreuBase() <= preuMax) { // Preu per un dia
                 vehiclesFiltrats.add(vehicles.get(i));
             }
         }
@@ -33,8 +42,8 @@ public class GestorLloguers {
     }
     public static void filtrarPerPreuVG(List<VehicleGeneral> vehicles, double preuMax) {
         for (int i = 0; i < vehicles.size(); i++) {
-            if (vehicles.get(i).calcularPreuAmbDescompte(1) <= preuMax) { // Preu per un dia
-                vehicles.get(i).toString();
+            if (vehicles.get(i).getPreuBase() <= preuMax) { // Preu per un dia
+                System.out.println(vehicles.get(i).toString());
             }
         }
     }

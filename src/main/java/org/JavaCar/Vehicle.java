@@ -129,6 +129,6 @@ public abstract class Vehicle extends VehicleGeneral {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString()+", Etiqueta ambiental: "+etiquetaAmbiental;
     }
 }

@@ -543,9 +543,10 @@ public class Main {
         String linea;
         boolean teLletra;
         boolean teNumero;
+        boolean matriculaExisteix=false;
 
+        scanner.nextLine();
         do {
-            scanner.nextLine();
             teLletra = false;
             teNumero = false;
 
@@ -566,11 +567,16 @@ public class Main {
             }
             if (!teLletra || !teNumero) {
                 System.out.println("La línea no cumple los requisitos. Debe tener al menos una letra y un número.");
+                continue;
             }
-            if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", linea)) {
-                System.out.println("Esta matrícula ya existe, no pueden haber dos iguales.");
+            for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+                if (vehiclesDisponibles.get(i).getMatricula().equalsIgnoreCase(linea)) {
+                    System.out.println("Esta matrícula ya existe, no pueden haber dos iguales.");
+                    matriculaExisteix=true;
+                    break;
+                }
             }
-        } while (!teLletra || !teNumero || encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", linea));
+        } while (!teLletra || !teNumero || matriculaExisteix);
         // Convertir todas las letras a mayúsculas
         return linea.toUpperCase();
     }
@@ -620,7 +626,7 @@ public class Main {
         System.out.print("Potencia de motor: ");
         potenciaMotor = comprovarInt();
         System.out.println();
-        System.out.print("Si te autonomia, introdueix el valor. Si no, posa un valor negatiu: ");
+        System.out.print("Si tiene autonomía, introduce su valor. Si no, pon un valor negativo: ");
         autonomiaMotor = comprovarInt();
         System.out.println();
         //Construïm el motor del vehicle

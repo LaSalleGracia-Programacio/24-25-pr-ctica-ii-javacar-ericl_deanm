@@ -217,7 +217,7 @@ public class Main {
         //Declaració variables
         int opcion;
         double preuMax;
-        int comptador=0;
+        int comptador=1;
         String id;
         boolean vehicleTrobat=false;
         List<VehicleGeneral> vehiclesMirar = new ArrayList<>();
@@ -241,7 +241,9 @@ public class Main {
                 System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
                 while (true) {
                     do {
-                        comptador++;
+                        if (vehicleTrobat) {
+                            comptador++;
+                        }
                         System.out.println("Matrícula/id " + comptador + ":");
                         id = scanner.nextLine();
                         if (id.equals("0")) {
@@ -293,7 +295,7 @@ public class Main {
         int dies;
         double ingressosTotalsSD;
         double ingressosTotalsAD;
-        int comptador=0;
+        int comptador=1;
         String id;
         boolean vehicleTrobat=false;
         List<VehicleGeneral> vehiclesMirar = new ArrayList<>();
@@ -319,7 +321,9 @@ public class Main {
                 System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
                 while (true) {
                     do {
-                        comptador++;
+                        if (vehicleTrobat) {
+                            comptador++;
+                        }
                         System.out.println("Matrícula/id " + comptador + ":");
                         id = scanner.nextLine();
                         if (id.equals("0")) {
@@ -701,33 +705,26 @@ public class Main {
     public static void borrarLineaArchivo(String nombreArchivo, String atributABorrar) {
         List<String> lineas = new ArrayList<>();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            // Primera pasada: leer todas las líneas y marcar cuáles mantener
             while ((linea = br.readLine()) != null) {
                 boolean contieneAtributo = false;
-                // Verificar si la línea contiene el atributo a borrar
                 for (String atribut : linea.split(";")) {
                     if (atribut.trim().equals(atributABorrar.trim())) {
                         contieneAtributo = true;
                         break;
                     }
                 }
-                // Si no contiene el atributo, añadirla a la lista de líneas a conservar
                 if (!contieneAtributo) {
                     lineas.add(linea);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return; // Salir si hay error de lectura
         }
 
-        // Solo escribir si hay cambios
         if (!lineas.isEmpty()) {
-            try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
                 for (String linea : lineas) {
                     writer.write(linea);
                     writer.newLine();

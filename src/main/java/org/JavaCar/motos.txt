@@ -1,0 +1,4 @@
+1234ZZZ;Honda;CB125F;25.00;125;Gasolina;Dunlop;3;2023
+5678YYY;Yamaha;MT-07;45.00;689;Gasolina;Pirelli;6;2022
+9012XXX;Zero;SR/F;75.00;0;BEV;Michelin;4;2023
+3456WWW;Kawasaki;Ninja;60.00;998;Gasolina;Dunlop;9;2021

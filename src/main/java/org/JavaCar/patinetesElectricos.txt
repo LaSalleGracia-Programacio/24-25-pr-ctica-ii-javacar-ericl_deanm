@@ -1,0 +1,4 @@
+PAT-1;Xiaomi;MiPro2;0.20;BEV;Xiaomi
+PAT-2;Segway;NinebotMAX;0.25;BEV;Segway
+PAT-3;Kaabo;Mantis;0.35;BEV;Xiaomi
+PAT-4;Dualtron;Thunder;0.50;BEV;Segway

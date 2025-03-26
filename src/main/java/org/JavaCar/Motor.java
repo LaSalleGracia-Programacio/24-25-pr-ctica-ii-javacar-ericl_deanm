@@ -5,10 +5,26 @@ public class Motor {
     private int potencia;
     private int autonomia;
 
+    /**
+     * Constructor sense autonomia
+     * @param tipus
+     * @param potencia
+     */
     public Motor(String tipus, int potencia) {
         this.tipus = tipus;
         this.potencia = potencia;
-        this.autonomia = 0;
+    }
+
+    /**
+     * Constructor amb tots els tipus de variables
+     * @param tipus
+     * @param potencia
+     * @param autonomia
+     */
+    public Motor(String tipus, int potencia, int autonomia) {
+        this.tipus = tipus;
+        this.potencia = potencia;
+        this.autonomia = autonomia;
     }
 
     public String getTipus() {

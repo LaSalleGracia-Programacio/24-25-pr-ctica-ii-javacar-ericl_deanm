@@ -58,14 +58,6 @@ public class Moto extends Vehicle {
     @Override
     public void setRodes(Roda[] rodes) {this.rodes = rodes;}
     @Override
-    public void setDescompte(double descompte) {
-        super.setDescompte(descompte);
-    }
-    @Override
-    public double getDescompte() {
-        return this.descompte;
-    }
-    @Override
     public int getMesMatriculacio() {return mesMatriculacio;}
     @Override
     public void setMesMatriculacio(int mesMatriculacio) {
@@ -97,12 +89,17 @@ public class Moto extends Vehicle {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte;
         if (dies >= 2) {
-            return preuAmbDescompte = preuSenseDescompte - dies*1;
+            preuAmbDescompte = preuSenseDescompte - dies*1;
         } else if (dies>=5) {
             preuAmbDescompte = preuSenseDescompte - dies * 3;
         }else {
             preuAmbDescompte = preuSenseDescompte;
         }
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+", Cilindrada: "+cilindrada;
     }
 }

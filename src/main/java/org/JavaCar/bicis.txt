@@ -1,0 +1,4 @@
+BIC-1;Specialized;TurboVado;0.25;BEV;Shimano
+BIC-2;Trek;Powerfly;0.30;BEV;Mavic
+BIC-3;Cannondale;TesoroNeo;0.20;BEV;Shimano
+BIC-4;BH;AtomX;0.15;BEV;Mavic;

@@ -9,9 +9,9 @@ public abstract class Vehicle extends VehicleGeneral {
     //Override
     protected String marca;
     protected String model;
+    protected String matricula;
     //
 
-    protected String matricula;
     protected int mesMatriculacio;
     protected int anyMatriculacio;
     protected Etiquetas etiquetaAmbiental;
@@ -32,14 +32,14 @@ public abstract class Vehicle extends VehicleGeneral {
      * @param anyMatriculacio
      */
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes, int mesMatriculacio, int anyMatriculacio) {
-        super(marca, model, preuBase, motor, rodes);
+        super(matricula, marca, model, preuBase, motor, rodes);
         this.matricula = matricula;
         this.mesMatriculacio = mesMatriculacio;
         this.anyMatriculacio = anyMatriculacio;
     }
     //Constructor trampa
     protected Vehicle(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
-        super(matricula, model, preuBase, motor, rodes);
+        super(matricula, marca, model, preuBase, motor, rodes);
         this.matricula = matricula;
         this.marca = marca;
         this.model = model;
@@ -50,7 +50,9 @@ public abstract class Vehicle extends VehicleGeneral {
     }
 
     //Getters dels atributs
+    @Override
     public String getMatricula() {return matricula;}
+    @Override
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
@@ -80,14 +82,6 @@ public abstract class Vehicle extends VehicleGeneral {
     public Roda[] getRodes() {return rodes;}
     @Override
     public void setRodes(Roda[] rodes) {this.rodes = rodes;}
-    @Override
-    public void setDescompte(double descompte) {
-        super.setDescompte(descompte);
-    }
-    @Override
-    public double getDescompte() {
-        return this.descompte;
-    }
     public int getMesMatriculacio() {return mesMatriculacio;}
     public void setMesMatriculacio(int mesMatriculacio) {
         this.mesMatriculacio = mesMatriculacio;
@@ -131,5 +125,10 @@ public abstract class Vehicle extends VehicleGeneral {
         else {
             return Etiquetas.SenseDistintiu;
         }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

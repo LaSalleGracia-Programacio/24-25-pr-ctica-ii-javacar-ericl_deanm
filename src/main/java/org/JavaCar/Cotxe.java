@@ -59,14 +59,6 @@ public class Cotxe extends Vehicle {
     @Override
     public void setRodes(Roda[] rodes) {this.rodes = rodes;}
     @Override
-    public void setDescompte(double descompte) {
-        super.setDescompte(descompte);
-    }
-    @Override
-    public double getDescompte() {
-        return this.descompte;
-    }
-    @Override
     public int getMesMatriculacio() {return mesMatriculacio;}
     @Override
     public void setMesMatriculacio(int mesMatriculacio) {
@@ -94,7 +86,7 @@ public class Cotxe extends Vehicle {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte;
         if (dies >= 3) {
-            return preuAmbDescompte = preuSenseDescompte - dies*3;
+            preuAmbDescompte = preuSenseDescompte - dies*3;
         } else if (dies>=7) {
             preuAmbDescompte = preuSenseDescompte - dies * 7;
         }else {
@@ -102,4 +94,11 @@ public class Cotxe extends Vehicle {
         }
         return preuAmbDescompte;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+", Número de plazas: "+nombrePlaces;
+    }
+
+
 }

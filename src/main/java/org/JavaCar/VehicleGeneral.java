@@ -1,22 +1,26 @@
 package org.JavaCar;
 
+import java.util.Arrays;
+
 public abstract class VehicleGeneral implements Llogable, Descompte {
+    protected String matricula;
     protected String marca;
     protected String model;
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
-    protected double descompte;
 
     /**
      * Constructor amb paràmetres
+     * @param matricula
      * @param marca
      * @param model
      * @param preuBase
      * @param motor
      * @param rodes
      */
-    public VehicleGeneral(String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+    public VehicleGeneral(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+        this.matricula = matricula;
         this.marca = marca;
         this.model = model;
         this.preuBase = preuBase;
@@ -24,6 +28,12 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         this.rodes = rodes;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
     public String getMarca() {
         return marca;
     }
@@ -54,12 +64,6 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
     public void setRodes(Roda[] rodes) {
         this.rodes = rodes;
     }
-    public double getDescompte() {
-        return descompte;
-    }
-    public void setDescompte(double descompte) {
-        this.descompte = descompte;
-    }
 
     public double calcularPreu(int dies) {
         return preuBase*dies;
@@ -70,5 +74,15 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte = preuSenseDescompte;
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return "Matrícula='" + matricula + '\'' +
+                ", Marca='" + marca + '\'' +
+                ", Modelo='" + model + '\'' +
+                ", Precio base=" + preuBase +
+                ", Motor={" + motor.getTipus() +
+                ", Ruedas={" + rodes[0].getMarca()+rodes[0].getDiametre()+"}";
     }
 }

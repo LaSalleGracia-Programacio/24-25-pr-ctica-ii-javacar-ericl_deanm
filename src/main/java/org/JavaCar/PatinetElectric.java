@@ -1,23 +1,29 @@
 package org.JavaCar;
 
 public class PatinetElectric extends VehicleGeneral {
-    //Atributs
-    private int autonomia;
 
     /**
      * Constructor amb paràmetres
+     * @param matricula
      * @param marca
      * @param model
      * @param preuBase
      * @param motor
      * @param rodes
      */
-    public PatinetElectric(String marca, String model, double preuBase, Motor motor, Roda[] rodes, int autonomia) {
-        super(marca, model, preuBase, motor, rodes);
-        this.autonomia = autonomia;
+    public PatinetElectric(String matricula, String marca, String model, double preuBase, Motor motor, Roda[] rodes) {
+        super(matricula, marca, model, preuBase, motor, rodes);
     }
 
     //Getters i setters
+    @Override
+    public String getMatricula(){
+        return matricula;
+    }
+    @Override
+    public void setMatricula(String matricula){
+        this.matricula = matricula;
+    }
     @Override
     public String getMarca() {
         return marca;
@@ -58,20 +64,6 @@ public class PatinetElectric extends VehicleGeneral {
     public void setRodes(Roda[] rodes) {
         this.rodes = rodes;
     }
-    @Override
-    public double getDescompte() {
-        return descompte;
-    }
-    @Override
-    public void setDescompte(double descompte) {
-        this.descompte = descompte;
-    }
-    public int getAutonomia() {
-        return autonomia;
-    }
-    public void setAutonomia(int autonomia) {
-        this.autonomia = autonomia;
-    }
 
     //Mètode per calcular el preu
     @Override
@@ -84,7 +76,7 @@ public class PatinetElectric extends VehicleGeneral {
         double preuSenseDescompte = calcularPreu(minuts);
         double preuAmbDescompte;
         if (minuts >= 30) {
-            return preuAmbDescompte = preuSenseDescompte - minuts*0.02;
+           preuAmbDescompte = preuSenseDescompte - minuts*0.02;
         } else if (minuts>=60) {
             preuAmbDescompte = preuSenseDescompte - minuts*0.05;
         } else if (minuts >= 120) {
@@ -93,5 +85,10 @@ public class PatinetElectric extends VehicleGeneral {
             preuAmbDescompte = preuSenseDescompte;
         }
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

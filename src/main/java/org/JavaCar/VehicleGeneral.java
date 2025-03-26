@@ -2,7 +2,7 @@ package org.JavaCar;
 
 import java.util.Arrays;
 
-public abstract class VehicleGeneral implements Llogable, Descompte {
+public abstract class VehicleGeneral implements Llogable {
     protected String matricula;
     protected String marca;
     protected String model;
@@ -28,6 +28,7 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         this.rodes = rodes;
     }
 
+    //Getters i setters
     public String getMatricula() {
         return matricula;
     }
@@ -65,6 +66,7 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         this.rodes = rodes;
     }
 
+    @Override
     public double calcularPreu(int dies) {
         return preuBase*dies;
     }

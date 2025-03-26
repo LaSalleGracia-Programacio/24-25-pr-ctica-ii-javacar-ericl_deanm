@@ -1,0 +1,4 @@
+1234ABC;Volkswagen;Golf;45.00;5;Diesel;Michelin;3;2022
+5678DEF;Tesla;Model3;89.00;5;BEV;Pirelli;6;2023
+9012GHI;BMW;330e;120.00;5;PHEV;Continental;1;2023
+3456JKL;Seat;Ibiza;35.00;5;Gasolina;Michelin;11;2021

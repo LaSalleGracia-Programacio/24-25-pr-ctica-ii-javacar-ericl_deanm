@@ -16,18 +16,25 @@ public class Main {
     //Main
     public static void main(String[] args) {
         vehiclesDisponibles = crearObjectes();
-        solicitarCredenciales();
-        mostrarMenuPrincipal();
+        String control = solicitarCredenciales();
+        if (!control.equals("0")) {
+            mostrarMenuPrincipal();
+        }
     }
 
     /**
      * Solicita les credencials al usuari
      */
-    public static void solicitarCredenciales() {
+    public static String solicitarCredenciales() {
         boolean variableControl = false;
+        String usuario = "";
         do {
-            System.out.print("\nPrimero introduzca su usuario: ");
-            String usuario = scanner.nextLine();
+            System.out.print("\nPrimero introduzca su usuario, o pulse 0 para salir del programa: ");
+            usuario = scanner.nextLine();
+            if (usuario.equals("0")) {
+                System.out.println("¡Hasta la próxima!");
+                return usuario;
+            }
 
             System.out.print("A continuación, introduzca su contraseña: ");
             String contrasena = scanner.nextLine();
@@ -40,6 +47,7 @@ public class Main {
                 System.out.println("Usuario o contraseña incorrectos. Vuelva a intentarlo.");
             }
         }while (!variableControl);
+        return usuario;
     }
 
     /**

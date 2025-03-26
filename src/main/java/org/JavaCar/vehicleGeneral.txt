@@ -1,7 +1,7 @@
-BIC-001;Specialized;TurboVado;0.25;BEV;Shimano
-BIC-002;Trek;Powerfly;0.30;BEV;Mavic
-BIC-003;Cannondale;TesoroNeo;0.20;BEV;Shimano
-BIC-004;BH;AtomX;0.15;BEV;Mavic;
+BIC-1;Specialized;TurboVado;0.25;BEV;Shimano
+BIC-2;Trek;Powerfly;0.30;BEV;Mavic
+BIC-3;Cannondale;TesoroNeo;0.20;BEV;Shimano
+BIC-4;BH;AtomX;0.15;BEV;Mavic;
 1234ABC;Volkswagen;Golf;45.00;5;Diesel;Michelin;3;2022
 5678DEF;Tesla;Model3;89.00;5;BEV;Pirelli;6;2023
 9012GHI;BMW;330e;120.00;5;PHEV;Continental;1;2023

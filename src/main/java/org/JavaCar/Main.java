@@ -77,7 +77,7 @@ public class Main {
      */
     public static void mostrarMenuVehiculos() {
         System.out.println("\nPortal de Vehículos. Seleccione una opción:");
-        System.out.println("1. Añadir nuevo vehículo\n2. Modificar vehículo existente\n3. Eliminar vehículo existente\n4. Salir");
+        System.out.println("1. Añadir nuevo vehículo\n2. Eliminar vehículo existente\n3. Salir");
 
         System.out.print("Opción: ");
         int opcion = comprovarInt();
@@ -87,12 +87,9 @@ public class Main {
                 afegirVehicle();
                 break;
             case 2:
-                modificarVehicle();
+                eliminarVehicle();
                 break;
             case 3:
-                System.out.println("\nEliminando vehículo...");
-                break;
-            case 4:
                 System.out.println("\nSaliendo del portal de Vehículos...");
                 break;
             default:
@@ -157,21 +154,39 @@ public class Main {
         }
     }
 
-    public static void modificarVehicle() {
+    public static void eliminarVehicle() {
         //Declaració variables
-        String matricula;
+        String id;
+        char confirmar;
 
         //Inici funció
-        System.out.println("Escribe la matrícula o identificador del vehículo que quieres modificar:");
-        matricula = scanner.nextLine();
-        if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", matricula)){
-            System.out.println("Matrícula encontrada, que atributo quieres modificar?");
-            System.out.println("1. Matrícula.");
-            System.out.println("2. Marca.");
-            System.out.println("3. Modelo.");
-            System.out.println("4. Precio base.");
+        scanner.nextLine();
+        System.out.println("Escribe la matrícula o el identificador del vehículo que quieres eliminar: ");
+        id = scanner.nextLine();
+        id.equals(id.toUpperCase());
+        if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id)){
+            System.out.println("Identificador trobat, segur que vols eliminar el vehicle següent?:");
+            imprimirLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id);
+            System.out.println("y/n");
+            do {
+                confirmar = comprovarChar();
+                if (confirmar != 'n' && confirmar != 'y' && confirmar != 'N' && confirmar != 'Y') {
+                    System.out.println("Escribe 'n' para denegar o 'y' para confirmar.");
+                }
+            }while (confirmar != 'n' && confirmar != 'y' && confirmar != 'N' && confirmar != 'Y');
+            if (confirmar == 'y' || confirmar == 'Y') {
+                for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+                    if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
+                        vehiclesDisponibles.remove(i);
+                    }
+                }
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id);
+                System.out.println("Vehículo eliminado.");
+            }else {
+                System.out.println("Desconfirmando...");
+            }
         }else {
-            System.out.println("Matrícula no encontrada.");
+            System.out.println("Esta matrícula no se encuentra entre los vehículos disponibles.");
         }
     }
 
@@ -453,6 +468,57 @@ public class Main {
         return false;
     }
 
+    public static boolean borrarLineaArchivo(String nombreArchivo, String lineaABorrar) {
+        List<String> lineas = new ArrayList<>();
+        boolean lineaBorrada = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (!linea.trim().equals(lineaABorrar.trim())) {
+                    lineas.add(linea);
+                } else {
+                    lineaBorrada = true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        if (lineaBorrada) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(nombreArchivo))) {
+                for (String linea : lineas) {
+                    pw.println(linea);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        return lineaBorrada;
+    }
+
+    /**
+     * Imprimeix per consola la línea d'un arxiu
+     * @param nombreArchivo
+     * @param comprobar
+     */
+    public static void imprimirLineaArchivo(String nombreArchivo, String comprobar) {
+        try {
+            BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;
+            while ((linea = lecturaArchivo.readLine()) != null) {
+                if (linea.trim().equals(comprobar.trim())) {
+                    System.out.println(linea);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Imprimeix per consola l'arxiu
      * @param nombreArchivo
@@ -467,6 +533,28 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Comprova que la entrada sigui un char
+     * @return
+     */
+    public static char comprovarChar() {
+        //Declaració variables
+        String text;
+
+        //Inici funció
+        do{
+        text = scanner.nextLine();
+        if (text.length() == 0 || text.length() > 1) {
+            if (text.length()==0) {
+                System.out.println("Escribe algún caracter.");
+            }else {
+                System.out.println("Escribe solo un caracter.");
+            }
+        }
+        }while (text.length() == 0 || text.length() > 1);
+        return text.charAt(0);
     }
 
     /**

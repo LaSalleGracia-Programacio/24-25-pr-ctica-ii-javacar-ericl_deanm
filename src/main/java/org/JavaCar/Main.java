@@ -518,19 +518,19 @@ public class Main {
             Cotxe cotxe = new Cotxe(matricula, marca, model, preuBase, nombrePlaces, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim el cotxe a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(cotxe);
-            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/cotxes.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+nombrePlaces+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/cotxes.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+nombrePlaces+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio+";"+cotxe.etiquetaAmbiental);
         }else if (tipusVehicle.equals("Moto")) {
             //Construïm la moto
             Moto moto = new Moto(matricula, marca, model, preuBase, cilindrada, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim la moto a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(moto);
-            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/motos.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+cilindrada+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/motos.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+cilindrada+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio+";"+moto.etiquetaAmbiental);
         }else if (tipusVehicle.equals("Furgoneta")) {
             //Construïm la furgo
             Furgoneta furgo = new Furgoneta(matricula, marca, model, preuBase, capacitatCarga, motor, rodes, mesMatriculacio, anyMatriculacio);
             //Afegim la furgo a l'arraylist vehiclesDisponibles
             vehiclesDisponibles.add(furgo);
-            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/furgonetas.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+capacitatCarga+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio);
+            escriureArxiu("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/furgonetas.txt", matricula+";"+marca+";"+model+";"+preuBase+";"+capacitatCarga+";"+motor.getTipus()+";"+rodes[0].getMarca()+";"+mesMatriculacio+";"+anyMatriculacio+";"+furgo.etiquetaAmbiental);
         }else if (tipusVehicle.equals("Bicicleta")) {
             //Construïm la bici
             BicicletaElectrica bici = new BicicletaElectrica(matricula, marca, model, preuBase, motor, rodes);
@@ -555,12 +555,13 @@ public class Main {
         String linea;
         boolean teLletra;
         boolean teNumero;
-        boolean matriculaExisteix=false;
+        boolean matriculaExisteix;
 
         scanner.nextLine();
         do {
             teLletra = false;
             teNumero = false;
+            matriculaExisteix=false;
 
             System.out.println("Introduce la matrícula (debe contener al menos una letra y un número): ");
             linea = scanner.nextLine();

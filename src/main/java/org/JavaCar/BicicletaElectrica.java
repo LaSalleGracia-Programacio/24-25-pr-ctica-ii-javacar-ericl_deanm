@@ -64,14 +64,6 @@ public class BicicletaElectrica extends VehicleGeneral{
     public void setRodes(Roda[] rodes) {
         this.rodes = rodes;
     }
-    @Override
-    public double getDescompte() {
-        return descompte;
-    }
-    @Override
-    public void setDescompte(double descompte) {
-        this.descompte = descompte;
-    }
 
     //Mètode per calcular el preu
     @Override
@@ -93,5 +85,10 @@ public class BicicletaElectrica extends VehicleGeneral{
             preuAmbDescompte = preuSenseDescompte;
         }
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

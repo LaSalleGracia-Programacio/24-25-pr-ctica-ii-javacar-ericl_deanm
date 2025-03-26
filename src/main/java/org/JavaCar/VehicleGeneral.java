@@ -1,5 +1,7 @@
 package org.JavaCar;
 
+import java.util.Arrays;
+
 public abstract class VehicleGeneral implements Llogable, Descompte {
     protected String matricula;
     protected String marca;
@@ -7,7 +9,6 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
     protected double preuBase;
     protected Motor motor;
     protected Roda[] rodes;
-    protected double descompte;
 
     /**
      * Constructor amb paràmetres
@@ -63,12 +64,6 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
     public void setRodes(Roda[] rodes) {
         this.rodes = rodes;
     }
-    public double getDescompte() {
-        return descompte;
-    }
-    public void setDescompte(double descompte) {
-        this.descompte = descompte;
-    }
 
     public double calcularPreu(int dies) {
         return preuBase*dies;
@@ -79,5 +74,15 @@ public abstract class VehicleGeneral implements Llogable, Descompte {
         double preuSenseDescompte = calcularPreu(dies);
         double preuAmbDescompte = preuSenseDescompte;
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return "Matrícula='" + matricula + '\'' +
+                ", Marca='" + marca + '\'' +
+                ", Modelo='" + model + '\'' +
+                ", Precio base=" + preuBase +
+                ", Motor=" + motor.getTipus() +
+                ", Ruedas={" + Arrays.toString(rodes)+"}";
     }
 }

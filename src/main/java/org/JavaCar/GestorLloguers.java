@@ -31,13 +31,11 @@ public class GestorLloguers {
         }
         return vehiclesFiltrats;
     }
-    public static List<VehicleGeneral> filtrarPerPreuVG(List<VehicleGeneral> vehicles, double preuMax) {
-        List<VehicleGeneral> vehiclesFiltrats = new ArrayList<>();
+    public static void filtrarPerPreuVG(List<VehicleGeneral> vehicles, double preuMax) {
         for (int i = 0; i < vehicles.size(); i++) {
             if (vehicles.get(i).calcularPreuAmbDescompte(1) <= preuMax) { // Preu per un dia
-                vehiclesFiltrats.add(vehicles.get(i));
+                vehicles.get(i).toString();
             }
         }
-        return vehiclesFiltrats;
     }
 }

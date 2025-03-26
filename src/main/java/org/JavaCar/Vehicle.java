@@ -82,14 +82,6 @@ public abstract class Vehicle extends VehicleGeneral {
     public Roda[] getRodes() {return rodes;}
     @Override
     public void setRodes(Roda[] rodes) {this.rodes = rodes;}
-    @Override
-    public void setDescompte(double descompte) {
-        super.setDescompte(descompte);
-    }
-    @Override
-    public double getDescompte() {
-        return this.descompte;
-    }
     public int getMesMatriculacio() {return mesMatriculacio;}
     public void setMesMatriculacio(int mesMatriculacio) {
         this.mesMatriculacio = mesMatriculacio;
@@ -133,5 +125,10 @@ public abstract class Vehicle extends VehicleGeneral {
         else {
             return Etiquetas.SenseDistintiu;
         }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

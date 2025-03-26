@@ -1,5 +1,7 @@
 package org.JavaCar;
 
+import java.util.Arrays;
+
 public class Furgoneta extends Vehicle{
     //Atributs
     private int capacitatCarga;
@@ -59,14 +61,6 @@ public class Furgoneta extends Vehicle{
     @Override
     public void setRodes(Roda[] rodes) {this.rodes = rodes;}
     @Override
-    public void setDescompte(double descompte) {
-        super.setDescompte(descompte);
-    }
-    @Override
-    public double getDescompte() {
-        return this.descompte;
-    }
-    @Override
     public int getMesMatriculacio() {return mesMatriculacio;}
     @Override
     public void setMesMatriculacio(int mesMatriculacio) {
@@ -105,5 +99,10 @@ public class Furgoneta extends Vehicle{
             preuAmbDescompte = preuSenseDescompte;
         }
         return preuAmbDescompte;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+", Capacidad de carga: "+capacitatCarga;
     }
 }

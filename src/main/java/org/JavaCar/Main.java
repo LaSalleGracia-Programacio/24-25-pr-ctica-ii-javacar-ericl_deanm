@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.JavaCar.GestorLloguers.calcularIngressosTotalsVG;
+import static org.JavaCar.GestorLloguers.filtrarPerPreuVG;
+
 public class Main {
     //Variables estàtiques
     static Scanner scanner = new Scanner(System.in);
@@ -58,13 +61,13 @@ public class Main {
                     mostrarMenuVehiculos();
                     break;
                 case 2:
-                    System.out.println("\nAccediendo al portal de Cuentas...");
+                    mostrarMenuCuentas();
                     break;
                 case 3:
                     mostrarMenuRegistros();
                     break;
                 case 4:
-                    System.out.println("\nHasta la próxima...");
+                    System.out.println("\n¡Hasta la próxima!");
                     break;
                 default:
                     System.out.println("\nOpción no válida. Intente de nuevo.");
@@ -94,9 +97,89 @@ public class Main {
                 break;
             default:
                 System.out.println("\nOpción no válida.");
+                break;
         }
     }
 
+    /**
+     * Mostra el menu de mostrar comptes
+     */
+    public static void mostrarMenuCuentas() {
+        //Declaració variables
+        int opcion;
+
+        //Inici funció
+        System.out.println("\nPortal de Cuentas\n1. Ver ingresos totales\n2. Filtrar vehículos por precio\n3. Salir");
+        System.out.print("Opcion: ");
+        opcion = comprovarInt();
+
+        switch (opcion) {
+            case 1: {
+                veureIngresosTotals();
+                break;
+            }
+            case 2: {
+                filtrarPerPreu();
+                break;
+            }
+            case 3: {
+                System.out.println("\nSaliendo...");
+                break;
+            }
+            default: {
+                System.out.println("\nOpción no válida.");
+                break;
+            }
+        }
+    }
+
+    /**
+     * Mostra el menú de registres
+     */
+    public static void mostrarMenuRegistros() {
+        System.out.println("\nPortal de Registros. Seleccione una opción:");
+        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Registro de todos los vehículos\n7. Salir");
+
+        System.out.print("Opción: ");
+        int opcion = comprovarInt();
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Registro de coches:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/cotxes.txt");
+                break;
+            case 2:
+                System.out.println("Registro de motos:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/motos.txt");
+                break;
+            case 3:
+                System.out.println("Registro de furgonetas:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/furgonetas.txt");
+                break;
+            case 4:
+                System.out.println("Registro de bicicletas:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt");
+                break;
+            case 5:
+                System.out.println("Registro de patinetes:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt");
+                break;
+            case 6:
+                System.out.println("Registro de todos los vehículos:");
+                imprimirArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt");
+                break;
+            case 7:
+                System.out.println("Saliendo...");
+                break;
+            default:
+                System.out.println("\nOpción no válida.");
+                break;
+        }
+    }
+
+    /**
+     * Mostra el menú per triar un dels vehícles que afegir
+     */
     public static void afegirVehicle() {
         System.out.println("¿Qué vehículo quieres añadir?");
         System.out.println("1. Coche\n2. Moto\n3. Furgoneta\n4. Bicicleta\n5. Patinete\n6. Salir");
@@ -128,44 +211,157 @@ public class Main {
         }
     }
 
-    /**
-     * Mostra el menú de registres
-     */
-    public static void mostrarMenuRegistros() {
-        System.out.println("\nPortal de Registros. Seleccione una opción:");
-        System.out.println("1. Registro de coches\n2. Registro de motos\n3. Registro de furgonetas\n4. Registro de bicicletas\n5. Registro de patinetes eléctricos\n6. Salir");
+    public static void filtrarPerPreu() {
+        //Declaració variables
+        int opcion;
+        double preuMax;
+        double ingressosTotals;
+        String variableControl;
+        int comptador=0;
+        String id;
+        boolean vehicleTrobat=false;
+        List<VehicleGeneral> vehiclesMirar = new ArrayList<>();
 
-        System.out.print("Opción: ");
-        int opcion = scanner.nextInt();
+        //Inici funció
+        System.out.println("¿Quieres filtrar por precio todos los vehículos o algunos concretos?");
+        System.out.println("1. Todos");
+        System.out.println("2. Concretos");
+        opcion = comprovarInt();
 
         switch (opcion) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                System.out.println("\nConsultando registros...");
+            case 1: {
+                System.out.println("Indica el precio máximo por día (bicicletas y patinetes se calcularán por minutos):");
+                preuMax=comprovarDouble();
+                filtrarPerPreuVG(vehiclesDisponibles, preuMax);
+                System.out.println("Vehículos filtrados por precio: "+preuMax);
                 break;
-            case 6:
-                System.out.println("\nSaliendo del portal de Registros...");
+            }
+            case 2: {
+                scanner.nextLine();
+                System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
+                while (true) {
+                    variableControl = scanner.nextLine();
+                    if (variableControl.equals("0")) {
+                        break;
+                    }else {
+                        comptador++;
+                        do {
+                            System.out.println("Matrícula/id " + comptador + ":");
+                            id = variableControl.toUpperCase();
+                            for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+                                if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
+                                    vehiclesMirar.add(vehiclesDisponibles.get(i));
+                                    vehicleTrobat = true;
+                                    break;
+                                }
+                            }
+                            if (!vehicleTrobat) {
+                                System.out.println("Matrícula no encontrada, vehículo no añadido");
+                            }
+                        }while (!vehicleTrobat);
+                        System.out.println("Vehículo encontrado y añadido");
+                    }
+                }
+                System.out.println("Lista de vehículos terminada.");
+                System.out.println("Indica el precio máximo por día (bicicletas y patinetes se calcularán por minutos):");
+                preuMax=comprovarDouble();
+                filtrarPerPreuVG(vehiclesMirar, preuMax);
+                System.out.println("Vehículos filtrados por precio: "+preuMax);
                 break;
-            default:
-                System.out.println("\nOpción no válida.");
+            }
+            default: {
+                System.out.println("Opción no válida.");
+                break;
+            }
         }
     }
 
+    /**
+     * Mostra els ingressos totals de tots els vehícles o dels especificats segons x dies
+     */
+    public static void veureIngresosTotals() {
+        //Declaració variables
+        int opcion;
+        int dies;
+        double ingressosTotals;
+        String variableControl;
+        int comptador=0;
+        String id;
+        boolean vehicleTrobat=false;
+        List<VehicleGeneral> vehiclesMirar = new ArrayList<>();
+
+        //Inici funció
+        System.out.println("¿Quieres calcular ingresos de todos los vehículos o de algunos concretos?");
+        System.out.println("1. Todos");
+        System.out.println("2. Concretos");
+        opcion = comprovarInt();
+
+        switch (opcion) {
+            case 1: {
+                System.out.println("Indica los días que quieres calcular (bicicletas y patinetes se calcularán por minutos):");
+                dies=comprovarInt();
+                ingressosTotals=calcularIngressosTotalsVG(vehiclesDisponibles, dies);
+                System.out.println("Los ingresos totales de todos los vehículos: " + ingressosTotals);
+                break;
+            }
+            case 2: {
+                scanner.nextLine();
+                System.out.println("Indica las matrículas o id de los vehículos que quieras calcular, e introduce 0 cuando ya no quieras introducir más:");
+                do {
+                    comptador++;
+                    System.out.println("Matrícula/id " + comptador + ":");
+                    variableControl = scanner.nextLine();
+                    if (variableControl.equals("0")) {
+                        break;
+                    }
+                    id = variableControl.toUpperCase();
+                    for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+                        if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
+                            vehiclesMirar.add(vehiclesDisponibles.get(i));
+                            vehicleTrobat = true;
+                            break;
+                        }
+                    }
+                    if (!vehicleTrobat) {
+                        System.out.println("Matrícula no encontrada, vehículo no añadido");
+                    }
+                }while (!vehicleTrobat);
+                System.out.println("Vehículo encontrado y añadido");
+                System.out.println("Lista de vehículos terminada.");
+                System.out.println("Indica los días que quieres calcular (bicicletas y patinetes se calcularán por minutos):");
+                dies=comprovarInt();
+                ingressosTotals=calcularIngressosTotalsVG(vehiclesMirar, dies);
+                System.out.println("Los ingresos totales de los vehículos indicados: " + ingressosTotals);
+                break;
+            }
+            default: {
+                System.out.println("Opción no válida.");
+                break;
+            }
+        }
+    }
+
+    /**
+     * Elimina un vehicle tant de l'arraylist com dels documents.txt
+     */
     public static void eliminarVehicle() {
         //Declaració variables
         String id;
         char confirmar;
+        boolean vehicleTrobat=false;
 
         //Inici funció
         scanner.nextLine();
         System.out.println("Escribe la matrícula o el identificador del vehículo que quieres eliminar: ");
         id = scanner.nextLine();
-        id.equals(id.toUpperCase());
-        if (encontrarAtributoArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id)){
-            System.out.println("Identificador trobat, segur que vols eliminar el vehicle següent?:");
+        id=(id.toUpperCase());
+        for (int i = 0; i < vehiclesDisponibles.size(); i++) {
+            if (vehiclesDisponibles.get(i).getMatricula().equals(id)) {
+                vehicleTrobat=true;
+            }
+        }
+        if (vehicleTrobat){
+            System.out.println("Identificador encontrado, seguro que quieres eliminar el vehículo siguiente?:");
             imprimirLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id);
             System.out.println("y/n");
             do {
@@ -181,6 +377,11 @@ public class Main {
                     }
                 }
                 borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/vehicleGeneral.txt", id);
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/bicis.txt", id);
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/cotxes.txt", id);
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/furgonetas.txt", id);
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/motos.txt", id);
+                borrarLineaArchivo("C:/Users/Eric/OneDrive/Documentos/GitHub/24-25-pr-ctica-ii-javacar-ericl_deanm/src/main/java/org/JavaCar/patinetesElectricos.txt", id);
                 System.out.println("Vehículo eliminado.");
             }else {
                 System.out.println("Desconfirmando...");
@@ -468,36 +669,44 @@ public class Main {
         return false;
     }
 
-    public static boolean borrarLineaArchivo(String nombreArchivo, String lineaABorrar) {
+    public static void borrarLineaArchivo(String nombreArchivo, String atributABorrar) {
         List<String> lineas = new ArrayList<>();
-        boolean lineaBorrada = false;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
             String linea;
+            // Primera pasada: leer todas las líneas y marcar cuáles mantener
             while ((linea = br.readLine()) != null) {
-                if (!linea.trim().equals(lineaABorrar.trim())) {
+                boolean contieneAtributo = false;
+                // Verificar si la línea contiene el atributo a borrar
+                for (String atribut : linea.split(";")) {
+                    if (atribut.trim().equals(atributABorrar.trim())) {
+                        contieneAtributo = true;
+                        break;
+                    }
+                }
+                // Si no contiene el atributo, añadirla a la lista de líneas a conservar
+                if (!contieneAtributo) {
                     lineas.add(linea);
-                } else {
-                    lineaBorrada = true;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            return; // Salir si hay error de lectura
         }
 
-        if (lineaBorrada) {
-            try (PrintWriter pw = new PrintWriter(new FileWriter(nombreArchivo))) {
+        // Solo escribir si hay cambios
+        if (!lineas.isEmpty()) {
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo));
                 for (String linea : lineas) {
-                    pw.println(linea);
+                    writer.write(linea);
+                    writer.newLine();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-                return false;
+                System.err.println("Error al escribir en el archivo: " + e.getMessage());
             }
         }
-
-        return lineaBorrada;
     }
 
     /**
@@ -510,8 +719,10 @@ public class Main {
             BufferedReader lecturaArchivo = new BufferedReader(new FileReader(nombreArchivo));
             String linea;
             while ((linea = lecturaArchivo.readLine()) != null) {
-                if (linea.trim().equals(comprobar.trim())) {
-                    System.out.println(linea);
+                for (String atribut : linea.split(";")) {
+                    if (atribut.trim().equals(comprobar.trim())) {
+                        System.out.println(linea);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -596,16 +807,16 @@ public class Main {
         Roda rodaBici2 = new Roda("Mavic", 26);
 
         // Constructor per a BicicletaElectrica (preu per minut)
-        BicicletaElectrica bici1 = new BicicletaElectrica("BIC-001", "Specialized", "Turbo Vado", 0.25, motorBici1,
+        BicicletaElectrica bici1 = new BicicletaElectrica("BIC-1", "Specialized", "Turbo Vado", 0.25, motorBici1,
                 new Roda[]{rodaBici1, rodaBici1});
         vehiclesDisponibles.add(bici1);
-        BicicletaElectrica bici2 = new BicicletaElectrica("BIC-002","Trek", "Powerfly", 0.30, motorBici2,
+        BicicletaElectrica bici2 = new BicicletaElectrica("BIC-2","Trek", "Powerfly", 0.30, motorBici2,
                 new Roda[]{rodaBici2, rodaBici2});
         vehiclesDisponibles.add(bici2);
-        BicicletaElectrica bici3 = new BicicletaElectrica("BIC-003","Cannondale", "Tesoro Neo", 0.20, motorBici3,
+        BicicletaElectrica bici3 = new BicicletaElectrica("BIC-3","Cannondale", "Tesoro Neo", 0.20, motorBici3,
                 new Roda[]{rodaBici1, rodaBici1});
         vehiclesDisponibles.add(bici3);
-        BicicletaElectrica bici4 = new BicicletaElectrica("BIC-004","BH", "AtomX", 0.15, motorBici4,
+        BicicletaElectrica bici4 = new BicicletaElectrica("BIC-4","BH", "AtomX", 0.15, motorBici4,
                 new Roda[]{rodaBici2, rodaBici2});
         vehiclesDisponibles.add(bici4);
 
@@ -619,16 +830,16 @@ public class Main {
         Roda rodaPatinet2 = new Roda("Segway", 10);
 
         // Constructor per a PatinetElectric (preu per minut)
-        PatinetElectric patinet1 = new PatinetElectric("PAT-001","Xiaomi", "Mi Pro 2", 0.20, motorPatinet1,
+        PatinetElectric patinet1 = new PatinetElectric("PAT-1","Xiaomi", "Mi Pro 2", 0.20, motorPatinet1,
                 new Roda[]{rodaPatinet1, rodaPatinet1});
         vehiclesDisponibles.add(patinet1);
-        PatinetElectric patinet2 = new PatinetElectric("PAT-002","Segway", "Ninebot MAX", 0.25, motorPatinet2,
+        PatinetElectric patinet2 = new PatinetElectric("PAT-2","Segway", "Ninebot MAX", 0.25, motorPatinet2,
                 new Roda[]{rodaPatinet2, rodaPatinet2});
         vehiclesDisponibles.add(patinet2);
-        PatinetElectric patinet3 = new PatinetElectric("PAT-003","Kaabo", "Mantis", 0.35, motorPatinet3,
+        PatinetElectric patinet3 = new PatinetElectric("PAT-3","Kaabo", "Mantis", 0.35, motorPatinet3,
                 new Roda[]{rodaPatinet1, rodaPatinet1});
         vehiclesDisponibles.add(patinet3);
-        PatinetElectric patinet4 = new PatinetElectric("PAT-004","Dualtron", "Thunder", 0.50, motorPatinet4,
+        PatinetElectric patinet4 = new PatinetElectric("PAT-4","Dualtron", "Thunder", 0.50, motorPatinet4,
                 new Roda[]{rodaPatinet2, rodaPatinet2});
         vehiclesDisponibles.add(patinet4);
 
